@@ -210,12 +210,15 @@ const Journey = () => {
 									</p>
 									Tech Stack:
 									<div className="flex flex-wrap gap-2 ">
-										{project.techStack.map((item) => (
-											<span
-												className={`${item.color} rounded-full px-3 text-white`}>
-												{item.tech}
-											</span>
-										))}
+										{project.techStack.map(
+											(item, index) => (
+												<span
+													key={index}
+													className={`${item.color} rounded-full px-3 text-white`}>
+													{item.tech}
+												</span>
+											)
+										)}
 									</div>
 								</div>
 							</div>

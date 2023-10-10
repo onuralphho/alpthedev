@@ -96,13 +96,13 @@ const Contact = () => {
 					onSubmit={handleSubmit}
 					className="container h-max flex flex-col gap-3 rounded-3xl bg-stone-800 p-5 md:p-10 max-w-[1000px]  ">
 					<h2 className="text-white font-extrabold text-2xl text-center">
-						Onuralp the{" "}
+						Onuralp the
 						<span className="text-5xl md:text-5xl text-purple-600  ">
 							Developer
 						</span>
 					</h2>
 					<p className="text-white font-bold md:text-xl my-2 md:m-3 text-center">
-						If you're looking for a reliable and skilled web
+						If you are looking for a reliable and skilled web
 						developer to help bring your ideas to life, contact me
 						here!
 					</p>
@@ -151,7 +151,7 @@ const Contact = () => {
 						</p>
 					</div>
 					<button className="w-fit transition-all hover:bg-green-300 bg-green-400 text-3xl px-5 py-1 rounded-xl text-[#252525] font-bold flex gap-3">
-						<span>Send</span>{" "}
+						<span>Send</span>
 						{isMessageSending ? (
 							<span className="w-6 h-6 border-t-purple-600 border-t-[3px] border-r-[3px] border-r-transparent rounded-full   self-center animate-spin"></span>
 						) : (

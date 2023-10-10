@@ -1,7 +1,7 @@
 "use client"
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
-import { useScroll } from "@/hooks/useScroll";
+import { useScroll } from "@/lib/scrollInto";
 import profilePicture from "@/assets/profile.jpg";
 import Image from "next/image";
 const Header = () => {

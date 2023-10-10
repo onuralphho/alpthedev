@@ -1,6 +1,6 @@
 "use client";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { useScroll } from "../hooks/useScroll";
+import { scrollInto } from "@/lib/scrollInto";
 import { useState } from "react";
 
 const PageShift = (props: any) => {
@@ -15,7 +15,7 @@ const PageShift = (props: any) => {
 				setShowInfo(false);
 			}}
 			onClick={() => {
-				useScroll(props.children);
+				useState(props.children);
 			}}
 			className={`absolute bg-[#ffffff3d] backdrop-blur-sm z-20 max-w-fit m-auto left-0 right-0 group  border p-1  md:p-2 rounded-full flex items-center justify-center md:opacity-40 hover:opacity-80 transition-all  ${
 				props.way === "up"
