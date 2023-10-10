@@ -236,7 +236,7 @@ const Journey = () => {
 							}}
 							className="z-20 transition-all  absolute right-2 bottom-2  backdrop-blur-xl bg-[rgba(0,0,0,0.2)] text-[white]   shadow-md shadow-[rgba(0,0,0,0.5)] font-bold  p-2 px-4 rounded-md">
 							<FiArrowRight color="" className=" w-5 h-5" />
-							<span className="font-bold max-md:hidden absolute top-2 -left-7 transition-all opacity-0  group-hover:opacity-100 group-hover:left-12 text-sm">
+							<span className="font-bold max-md:hidden absolute top-2 left-0  transition-all opacity-0  group-hover:opacity-100 group-hover:top-5 text-sm">
 								Description
 							</span>
 						</button>

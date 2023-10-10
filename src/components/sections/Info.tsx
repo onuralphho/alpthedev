@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import PageShift from "../PageShift";
 import profilePicture from "@/assets/profile.jpg";
-import {useEffect } from "react";
+import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CoreSkills from "../CoreSkills";
@@ -41,7 +41,7 @@ const Info = () => {
 				animate={controls}
 				className="flex gap-2  justify-start items-center md:pl-60 flex-wrap">
 				<span className="text-4xl md:text-7xl font-bold text-white ">
-					Hi, I'm
+					Hi, I{"'"}m
 				</span>
 				<span className="flex flex-col gap-7 md:gap-10 font-bold h-20   md:h-28 overflow-hidden">
 					{selfInfo.map((i, index) => (
