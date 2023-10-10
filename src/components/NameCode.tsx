@@ -13,10 +13,10 @@ const NameCode = () => {
 							{"<h1 "}
 							<span className="text-orange-500">
 								id<span className="text-red-500">=</span>
-								<span className="text-orange-300">'name'</span>
+								<span className="text-orange-300">{"'name'"}</span>
 							</span>
-							{">"}{" "}
-						</span>{" "}
+							{">"}
+						</span>
 						<br />
 					</h1>
 					<h1 className="max-w-fit pl-5">

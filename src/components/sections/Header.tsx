@@ -1,7 +1,7 @@
 "use client"
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
-import { useScroll } from "@/lib/scrollInto";
+import { scrollInto } from "@/lib/scrollInto";
 import profilePicture from "@/assets/profile.jpg";
 import Image from "next/image";
 const Header = () => {
@@ -50,7 +50,7 @@ const Header = () => {
 				<span
 					className="cursor-pointer hover:text-purple-300 transition-all"
 					onClick={() => {
-						useScroll("section1");
+						scrollInto("section1");
 					}}>
 					About
 				</span>
@@ -58,7 +58,7 @@ const Header = () => {
 				<span
 					className="cursor-pointer hover:text-purple-300 transition-all"
 					onClick={() => {
-						useScroll("section2");
+						scrollInto("section2");
 					}}>
 					Projects
 				</span>
@@ -66,7 +66,7 @@ const Header = () => {
 				<span
 					className="cursor-pointer hover:text-purple-300 transition-all"
 					onClick={() => {
-						useScroll("section3");
+						scrollInto("section3");
 					}}>
 					Contact
 				</span>
