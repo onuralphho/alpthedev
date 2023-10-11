@@ -19,8 +19,8 @@ const PageShift = (props: any) => {
 			}}
 			className={`absolute bg-[#ffffff3d] backdrop-blur-sm z-20 max-w-fit m-auto left-0 right-0 group  border p-1  md:p-2 rounded-full flex items-center justify-center md:opacity-40 hover:opacity-80 transition-all  ${
 				props.way === "up"
-					? "max-md:bottom-10 md:top-0 mt-2"
-					: "bottom-0 mb-2"
+					? "max-md:left-24 max-md:bottom-0 max-md:mb-2 md:top-0 md:mt-2"
+					: "max-md:-left-24 bottom-0 mb-2"
 			}`}>
 			{props.way === "up" ? (
 				<SlArrowUp
