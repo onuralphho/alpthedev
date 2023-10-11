@@ -6,8 +6,12 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Onuralp the Developer",
+	alternates:{canonical:"https://onuralpthedev.vercel.app"},
+	title: "Web Developer",
 	description: "Onuralp, a passionate software developer who loves crafting unique and functional web applications. Explore a portfolio showcasing skills and experiences across various projects.",
+	verification: {
+		google: "google-site-verification=l2cChLMFXghPWGTJtXYMp1ECwa9UqFng8HkMhLuAhck"	
+	},
 };
 
 export default function RootLayout({
