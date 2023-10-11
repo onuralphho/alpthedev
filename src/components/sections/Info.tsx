@@ -33,7 +33,7 @@ const Info = () => {
 	return (
 		<div
 			id="section1"
-			className="flex flex-col relative  gap-2 md:pt-28  h-[100svh] max-h-[1080px]  w-full pt-20 p-10 bg-gradient-to-tr   from-red-500 to- shadow-[rgba(0,0,0,1)] shadow-2xl">
+			className="flex flex-col relative  gap-2 md:pt-28  h-[100svh]   w-full pt-20 p-10 bg-gradient-to-tr   from-red-500 to- shadow-[rgba(0,0,0,1)] shadow-2xl">
 			<motion.div
 				ref={ref}
 				variants={skillsVariants}
@@ -74,13 +74,13 @@ const Info = () => {
 				</motion.div>
 
 				{/* Timeline */}
-				<div className="max-md:hidden absolute inset-0 left-20 my-auto w-[1150px] -z-10 h-0.5 bg-white">
+				<div className="max-md:hidden absolute inset-0 left-20 my-auto w-full -z-10 h-0.5 bg-white">
 					<div className="hover:w-4 group transition-all absolute w-3 aspect-square bg-white rounded-full -left-1 -top-[4px]">
 						<div className="group-hover:opacity-100 text-white text-xl font-semibold absolute left-0 top-2">
 							{2019}
 						</div>
 					</div>
-					<div className="hover:w-4 group transition-all absolute w-3 aspect-square bg-white rounded-full left-[700px] -top-[4px]">
+					<div className="hover:w-4 group transition-all absolute w-3 aspect-square bg-white rounded-full right-40 -top-[4px]">
 						<div className="group-hover:opacity-100 text-white text-xl font-semibold absolute  top-2">
 							{new Date().getFullYear()}
 						</div>

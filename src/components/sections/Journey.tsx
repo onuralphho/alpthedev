@@ -145,9 +145,9 @@ const Journey = () => {
 	return (
 		<div
 			id="section2"
-			className="flex relative justify-center md:items-center h-[100svh] max-h-[1080px] w-full pt-20 p-10 bg-gradient-to-tr from-green-600  shadow-[rgba(0,0,0,1)] shadow-2xl">
+			className="flex relative justify-center md:items-center h-[100svh] w-full pt-20 p-10 bg-gradient-to-tr from-green-600  shadow-[rgba(0,0,0,1)] shadow-2xl">
 			<Swiper
-				spaceBetween={30}
+				spaceBetween={0}
 				slidesPerView={4}
 				className="mySwiper h-min p-3 lg:p-10 "
 				breakpoints={{
