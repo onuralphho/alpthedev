@@ -10,10 +10,9 @@ export const metadata: Metadata = {
 	title: "Web Developer",
 	description: "Onuralp, a passionate software developer who loves crafting unique and functional web applications. Explore a portfolio showcasing skills and experiences across various projects.",
 	verification: {
-		google: "google-site-verification=l2cChLMFXghPWGTJtXYMp1ECwa9UqFng8HkMhLuAhck"	
+		google: "google-site-verification=H5KCqVTa4IoEfC6gAUiy5g352hkeGiyAzXOEe9M2xEI"	
 	},
 };
-
 export default function RootLayout({
 	children,
 }: {
