@@ -33,14 +33,14 @@ const Info = () => {
 	return (
 		<div
 			id="section1"
-			className="flex flex-col relative  gap-2 md:pt-28  h-[100svh]   w-full pt-20 p-10 bg-gradient-to-tr   from-red-500 to- shadow-[rgba(0,0,0,1)] shadow-2xl">
+			className="flex flex-col relative  md:gap-2 md:pt-28  h-[100svh]   w-full pt-20 p-10 bg-gradient-to-tr   from-red-500 to- shadow-[rgba(0,0,0,1)] shadow-2xl">
 			<motion.div
 				ref={ref}
 				variants={skillsVariants}
 				initial="hidden"
 				animate={controls}
-				className="flex gap-2  justify-start items-center md:pl-60 flex-wrap">
-				<span className="text-4xl md:text-7xl font-bold text-white ">
+				className="flex md:gap-2  justify-start items-center md:pl-60 flex-wrap">
+				<span className="text-3xl md:text-7xl font-bold text-white ">
 					Hi, I{"'"}m
 				</span>
 				<span className="flex flex-col gap-7 md:gap-10 font-bold h-20   md:h-28 overflow-hidden">
@@ -48,7 +48,7 @@ const Info = () => {
 						<span
 							key={index}
 							style={{ color: i.color }}
-							className={` text-6xl md:text-8xl toast `}>
+							className={` text-5xl md:text-8xl toast `}>
 							{i.text}
 						</span>
 					))}

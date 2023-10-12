@@ -148,8 +148,8 @@ const Journey = () => {
 			className="flex relative justify-center md:items-center h-[100svh] w-full pt-20 p-10 bg-gradient-to-tr from-green-600  shadow-[rgba(0,0,0,1)] shadow-2xl">
 			<Swiper
 				spaceBetween={0}
-				slidesPerView={4}
-				className="mySwiper h-min p-3 lg:p-10 "
+				slidesPerView={1}
+				className="h-min p-3 lg:p-10 "
 				breakpoints={{
 					0: {
 						slidesPerView: 1,
@@ -171,8 +171,8 @@ const Journey = () => {
 				{PROJECTS_DATA.map((project: IProject) => (
 					<SwiperSlide
 						key={project.id}
-						className="card-main select-none my-auto max-w-fit lg:mx-auto relative mx-2 group ">
-						<span className="z-20   transition-all  absolute right-2 top-2  backdrop-blur-xl bg-[rgba(0,0,0,0.2)] text-[white]   shadow-md shadow-[rgba(0,0,0,0.5)] font-bold  p-2 rounded-md">
+						className="select-none my-auto max-w-fit lg:mx-auto relative max-md:mx-8 p-2 group ">
+						<span className="z-20   transition-all  absolute right-2 top-2  backdrop-blur-xl bg-[rgba(0,0,0,0.2)] text-[white]   shadow-md shadow-[rgba(0,0,0,0.5)] font-bold  p-2 rounded-lg">
 							{project.name}
 						</span>
 						<a
@@ -188,10 +188,10 @@ const Journey = () => {
 										cardRotate === project.id && "opacity-0"
 									}`}>
 									<Image
-										className="rounded-2xl overflow-hidden shadow-md shadow-[rgba(0,0,0,0.5)]"
+										className="rounded-2xl w-[300px] overflow-hidden shadow-md shadow-[rgba(0,0,0,0.5)]"
 										loading="lazy"
-										width={300}
-										height={600}
+										width={400}
+										height={800}
 										alt={project.name}
 										src={project.pictureLink.src}
 									/>
@@ -234,11 +234,8 @@ const Journey = () => {
 									setCardRotate(project.id);
 								}
 							}}
-							className="z-20 transition-all  absolute right-2 bottom-2  backdrop-blur-xl bg-[rgba(0,0,0,0.2)] text-[white]   shadow-md shadow-[rgba(0,0,0,0.5)] font-bold  p-2 px-4 rounded-md">
+							className="z-20 transition-all  absolute right-2 bottom-2  backdrop-blur-xl bg-[rgba(0,0,0,0.2)] text-[white]   shadow-md shadow-[rgba(0,0,0,0.2)] font-bold  p-2 px-4 rounded-lg">
 							<FiArrowRight color="" className=" w-5 h-5" />
-							<span className="font-bold max-md:hidden absolute top-2 left-0  transition-all opacity-0  group-hover:opacity-100 group-hover:top-5 text-sm">
-								Description
-							</span>
 						</button>
 					</SwiperSlide>
 				))}
