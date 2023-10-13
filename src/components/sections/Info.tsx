@@ -6,6 +6,7 @@ import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CoreSkills from "../CoreSkills";
 import { scrollInto } from "@/lib/scrollInto";
+import Image from "next/image";
 
 const Info = () => {
 	const controls = useAnimation();
@@ -46,7 +47,7 @@ const Info = () => {
 					initial="hidden"
 					animate={controls}
 					className=" w-[100px] lg:w-[400px] flex flex-col  gap-10 pt-5 ">
-					<img
+					<Image
 						src={profilePicture.src}
 						alt="profile picture of author"
 						width={400}
