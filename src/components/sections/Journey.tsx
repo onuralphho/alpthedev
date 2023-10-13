@@ -224,6 +224,7 @@ const Journey = () => {
 							</div>
 						</a>
 						<button
+							aria-label="description"
 							onClick={() => {
 								if (
 									cardRotate !== 0 &&

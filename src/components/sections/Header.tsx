@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
 import { scrollInto } from "@/lib/scrollInto";
@@ -11,7 +11,10 @@ const Header = () => {
 			className="flex justify-between p-4 absolute z-10  w-full bg-transparent   transition-all">
 			<ul className="flex gap-4 ">
 				<li>
-					<a target="_blank" href="https://github.com/onuralphho/">
+					<a
+						aria-label="GitHub"
+						target="_blank"
+						href="https://github.com/onuralphho/">
 						<Image
 							src={profilePicture}
 							alt="profile picture of author"
@@ -28,6 +31,7 @@ const Header = () => {
 				</li>
 				<li>
 					<a
+						aria-label="Fiverr"
 						target="_blank"
 						href="https://www.fiverr.com/onuralphho61/create-responsive-react-web-apps-for-you">
 						<SiFiverr color="#1dbf73" className="social-icon" />
@@ -40,6 +44,7 @@ const Header = () => {
 						height: "max-content",
 					}}>
 					<a
+						aria-label="Linkedin"
 						target="_blank"
 						href="https://www.linkedin.com/in/onuralp-hacihamzaoglu-283a18175/">
 						<BsLinkedin color="#0a66c2" className="social-icon " />

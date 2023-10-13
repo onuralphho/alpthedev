@@ -117,8 +117,9 @@ const Contact = () => {
 							name="email_from"
 							className="text-xl peer w-full  invalid:border-red-600 p-3 bg-transparent   border-2 border-green-400 rounded-2xl outline-none"
 							placeholder=" "
+							
 						/>
-						<label className="absolute transition-all duration-300 bg-stone-800 pointer-events-none text-lg  px-1 h-min left-5 peer-placeholder-shown:text-2xl -top-20  peer-focus:-top-20 peer-focus:text-lg peer-placeholder-shown:-top-6 font-bold my-auto  bottom-0 ">
+						<label htmlFor="email_from" className="absolute transition-all duration-300 bg-stone-800 pointer-events-none text-lg  px-1 h-min left-5 peer-placeholder-shown:text-2xl -top-20  peer-focus:-top-20 peer-focus:text-lg peer-placeholder-shown:-top-6 font-bold my-auto  bottom-0 ">
 							E-mail
 						</label>
 						<p
@@ -140,7 +141,7 @@ const Contact = () => {
 							className="text-xl peer w-full  invalid:border-red-600 p-3 bg-transparent   border-2 border-green-400 rounded-2xl outline-none"
 							placeholder=" "
 						/>
-						<label className="absolute transition-all duration-300 bg-stone-800 pointer-events-none text-lg  px-1 h-min left-5 peer-placeholder-shown:text-2xl -top-20  peer-focus:-top-20 peer-focus:text-lg peer-placeholder-shown:-top-6 font-bold my-auto  bottom-0 ">
+						<label htmlFor="message" className="absolute transition-all duration-300 bg-stone-800 pointer-events-none text-lg  px-1 h-min left-5 peer-placeholder-shown:text-2xl -top-20  peer-focus:-top-20 peer-focus:text-lg peer-placeholder-shown:-top-6 font-bold my-auto  bottom-0 ">
 							Message
 						</label>
 						<p
