@@ -83,7 +83,7 @@ const Info = () => {
 								{" "}
 								Full Stack Developer
 							</span>{" "}
-							for the past three years, I've had the opportunity
+							for the past three years, I{"'"}ve had the opportunity
 							to architect and implement web solutions, from
 							responsive web applications to seamless user
 							interfaces, all while striving for the perfect
