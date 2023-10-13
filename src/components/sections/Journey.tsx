@@ -145,7 +145,7 @@ const Journey = () => {
 	return (
 		<div
 			id="section2"
-			className="flex relative justify-center md:items-center h-[100svh] w-full pt-20 p-10 bg-gradient-to-tr from-green-600  shadow-[rgba(0,0,0,1)] shadow-2xl">
+			className="flex relative justify-center md:items-center h-[100svh] w-full pt-20 p-10 bg-gradient-to-t from-[#0cfd9485] ">
 			<Swiper
 				spaceBetween={0}
 				slidesPerView={1}
@@ -171,7 +171,7 @@ const Journey = () => {
 				{PROJECTS_DATA.map((project: IProject) => (
 					<SwiperSlide
 						key={project.id}
-						className="select-none my-auto max-w-fit lg:mx-auto relative max-md:mx-8 p-2 group ">
+						className="select-none my-auto max-w-fit lg:mx-auto relative max-md:mx-6 p-2 group ">
 						<span className="z-20   transition-all  absolute right-2 top-2  backdrop-blur-xl bg-[rgba(0,0,0,0.2)] text-[white]   shadow-md shadow-[rgba(0,0,0,0.5)] font-bold  p-2 rounded-lg">
 							{project.name}
 						</span>

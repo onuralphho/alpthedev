@@ -15,18 +15,7 @@ const Header = () => {
 						aria-label="GitHub"
 						target="_blank"
 						href="https://github.com/onuralphho/">
-						<Image
-							src={profilePicture}
-							alt="profile picture of author"
-							loading="lazy"
-							width={35}
-							height={35}
-							className="  rounded-full md:hidden max-md:max-w-[35px] "
-						/>
-						<BsGithub
-							color="white"
-							className="social-icon max-md:hidden"
-						/>
+						<BsGithub color="white" className="social-icon " />
 					</a>
 				</li>
 				<li>
