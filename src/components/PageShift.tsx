@@ -1,23 +1,21 @@
 "use client";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { scrollInto } from "@/lib/scrollInto";
-import { useState } from "react";
+interface Props {
+	way: "down" | "up";
+	info: string;
+	children: string;
+}
 
-const PageShift = (props: any) => {
-	const [showInfo, setShowInfo] = useState(false);
+const PageShift = (props: Props) => {
 
 	return (
 		<button
-			onMouseEnter={() => {
-				setShowInfo(true);
-			}}
-			onMouseLeave={() => {
-				setShowInfo(false);
-			}}
+		
 			onClick={() => {
 				scrollInto(props.children);
 			}}
-			className={`absolute bg-[#ffffff3d] backdrop-blur-sm z-20 max-w-fit m-auto left-0 right-0 group  border p-1  md:p-2 rounded-full flex items-center justify-center md:opacity-40 hover:opacity-80 transition-all  ${
+			className={`absolute bg-[#ffffff3d] backdrop-blur-sm z-10 max-w-fit m-auto left-0 right-0 group  border p-1  md:p-2 rounded-full flex items-center justify-center md:opacity-40 hover:opacity-80 transition-all  ${
 				props.way === "up"
 					? "max-md:left-24 max-md:bottom-0 max-md:mb-2 md:top-0 md:mt-2"
 					: "max-md:-left-24 bottom-0 mb-2"

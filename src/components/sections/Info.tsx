@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CoreSkills from "../CoreSkills";
+import { scrollInto } from "@/lib/scrollInto";
 
 const Info = () => {
 	const controls = useAnimation();
@@ -17,11 +18,15 @@ const Info = () => {
 		visible: { opacity: 1, transition: { duration: 0.7 }, x: 0 },
 		hidden: { opacity: 0, x: 50 },
 	};
+	const fadeVariants = {
+		visible: { opacity: 1, transition: { duration: 0.7, delay: 1 }, x: 0 },
+		hidden: { opacity: 0 },
+	};
 
 	const selfInfo = [
-		{ text: "Developer", color: "#9333ea" },
-		{ text: "Engineer", color: "#d97706" },
-		{ text: "Designer", color: "#16a34a" },
+		{ text: "Developer", color: "#a431eb" },
+		{ text: "Engineer", color: "#f58402" },
+		{ text: "Designer", color: "#0cfd95" },
 	];
 	useEffect(() => {
 		if (inView) {
@@ -33,61 +38,77 @@ const Info = () => {
 	return (
 		<div
 			id="section1"
-			className="flex flex-col relative  md:gap-2 md:pt-28  h-[100svh]   w-full pt-20 p-10 bg-gradient-to-tr   from-red-500 to- shadow-[rgba(0,0,0,1)] shadow-2xl">
-			<motion.div
-				ref={ref}
-				variants={skillsVariants}
-				initial="hidden"
-				animate={controls}
-				className="flex md:gap-2  justify-start items-center md:pl-60 flex-wrap">
-				<span className="text-3xl md:text-7xl font-bold text-white ">
-					Hi, I{"'"}m
-				</span>
-				<span className="flex flex-col gap-7 md:gap-10 font-bold h-20   md:h-28 overflow-hidden">
-					{selfInfo.map((i, index) => (
-						<span
-							key={index}
-							style={{ color: i.color }}
-							className={` text-5xl md:text-8xl toast `}>
-							{i.text}
-						</span>
-					))}
-				</span>
-			</motion.div>
-
-			<div
-				className="flex relative w-full gap-3  max-md:flex-col  max-md:items-center items-center md:justify-around"
-				style={{ zIndex: "2" }}>
+			className="flex  overflow-hidden relative lg:px-48 lg:gap-2 lg:pt-44  h-[100svh]   w-full pt-20 p-5 lg:p-10 bg-gradient-to-b from-[#0cfd9447]   ">
+			<div className="flex max-lg:flex-col gap-5">
 				<motion.div
 					ref={ref}
 					variants={pictureVariants}
 					initial="hidden"
 					animate={controls}
-					className="flex  flex-col items-center gap-10 ">
+					className=" w-[100px] lg:w-[400px] flex flex-col  gap-10 pt-5 ">
 					<img
 						src={profilePicture.src}
 						alt="profile picture of author"
 						width={400}
 						height={400}
-						className="max-md:hidden  rounded-full max-md:max-w-[150px] shadow-lg shadow-[rgba(0,0,0,0.5)]"
+						className="  rounded-full w-full shadow-lg "
 					/>
 				</motion.div>
-
-				{/* Timeline */}
-				<div className="max-md:hidden absolute inset-0 left-20 my-auto w-full -z-10 h-0.5 bg-white">
-					<div className="hover:w-4 group transition-all absolute w-3 aspect-square bg-white rounded-full -left-1 -top-[4px]">
-						<div className="group-hover:opacity-100 text-white text-xl font-semibold absolute left-0 top-2">
-							{2019}
-						</div>
+				<motion.div
+					ref={ref}
+					variants={skillsVariants}
+					initial="hidden"
+					animate={controls}
+					className="flex flex-col lg:gap-2 justify-start flex-wrap ">
+					<div className="flex max-lg:flex-col gap-2 justify-start lg:items-center ">
+						<span className="text-3xl lg:text-7xl font-bold text-white">
+							Hi, I{"'"}m
+						</span>
+						<span className="flex flex-col gap-7 lg:gap-10 font-bold h-20 lg:h-28 overflow-hidden">
+							{selfInfo.map((i, index) => (
+								<span
+									key={index}
+									style={{ color: i.color }}
+									className={` text-5xl lg:text-8xl toast `}>
+									{i.text}
+								</span>
+							))}
+						</span>
 					</div>
-					<div className="hover:w-4 group transition-all absolute w-3 aspect-square bg-white rounded-full right-40 -top-[4px]">
-						<div className="group-hover:opacity-100 text-white text-xl font-semibold absolute  top-2">
-							{new Date().getFullYear()}
-						</div>
+					<div className="lg:w-8/12">
+						<article className="text-white text-sm lg:text-xl">
+							As a
+							<span className="text-lg lg:text-4xl text-[#0cfd95] font-bold">
+								{" "}
+								Full Stack Developer
+							</span>{" "}
+							for the past three years, I've had the opportunity
+							to architect and implement web solutions, from
+							responsive web applications to seamless user
+							interfaces, all while striving for the perfect
+							fusion of technology and creativity.
+						</article>
 					</div>
-				</div>
-				<CoreSkills />
+					<button
+						onClick={() => {
+							scrollInto("section3");
+						}}
+						aria-label="discover"
+						className="p-4 w-max font-bold rounded-lg lg:text-xl text-white my-4 bg-[#a431eb] hover:bg-[#33b07a] transition-all">
+						Connect
+					</button>
+				</motion.div>
 			</div>
+
+			<motion.div
+				ref={ref}
+				variants={fadeVariants}
+				initial="hidden"
+				animate={controls}
+				className="absolute max-lg:top-10 lg:bottom-4 -right-[300px] transition-all lg:right-4 max-lg:z-50 group hover:right-0">
+				
+				<CoreSkills />
+			</motion.div>
 
 			<PageShift way="down" info="Projects">
 				section2
