@@ -102,10 +102,9 @@ const Info = () => {
 			</div>
 
 			<motion.div
-				ref={ref}
 				variants={fadeVariants}
 				initial="hidden"
-				animate={controls}
+				animate="visible"
 				className="absolute max-lg:top-10 lg:bottom-4 -right-[300px] transition-all lg:right-4 max-lg:z-50 group hover:right-0">
 				
 				<CoreSkills />
