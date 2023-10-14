@@ -145,7 +145,7 @@ const Journey = () => {
 	return (
 		<div
 			id="section2"
-			className="flex relative justify-center md:items-center h-[100svh] w-full pt-20 p-10 bg-gradient-to-t from-[#0cfd9485] ">
+			className="flex relative overflow-hidden justify-center md:items-center h-[100svh] w-full pt-20 p-10 bg-gradient-to-t from-[#0cfd9485] ">
 			<Swiper
 				spaceBetween={0}
 				slidesPerView={1}

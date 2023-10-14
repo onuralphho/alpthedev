@@ -87,7 +87,7 @@ const Contact = () => {
 			/>
 			<div
 				id="section3"
-				className="flex relative justify-center md:items-center h-[100svh] w-full  pt-20 p-2  bg-gradient-to-b from-[#0cfd9485]">
+				className="flex overflow-hidden relative justify-center md:items-center h-[100svh] w-full  pt-20 p-2  bg-gradient-to-b from-[#0cfd9485]">
 				<motion.form
 					ref={ref}
 					animate={controls}
