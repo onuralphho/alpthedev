@@ -10,7 +10,7 @@ import Image from "next/image";
 
 const CoreSkills = () => {
 	return (
-		<div className="relative flex justify-around gap-1  lg:gap-5 p-2 lg:p-3 rounded-lg">
+		<div className="relative flex justify-around gap-1  lg:gap-5 p-2 lg:p-3 rounded-lg z-50">
 			<Tilt  className="h-max" tiltMaxAngleX={10} tiltMaxAngleY={10}>
 			<div className="w-10 aspect-square rounded-l-lg absolute bg-[#a431eb] grid place-items-center -left-9 top-4 lg:hidden text-white bold"><span>{"<"}</span> </div>	
 				<div className=" w-[300px] md:w-[400px] lg:w-[500px] relative grid grid-cols-2 lg:grid-cols-3 h-max gap-2 text-sm  shadow-md hover:z-50 border border-transparent hover:border-white lg:hover:scale-110 transition-all p-2 pt-5 lg:p-4 lg:pt-5 bg-[#252525] rounded-lg">

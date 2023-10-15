@@ -8,7 +8,7 @@ const Header = () => {
 	return (
 		<header
 			id="navbar"
-			className="flex justify-between p-4 absolute z-10  w-full bg-transparent   transition-all">
+			className="flex justify-between p-4 fixed z-[999]  w-full bg-transparent   transition-all">
 			<ul className="flex gap-4 ">
 				<li>
 					<a

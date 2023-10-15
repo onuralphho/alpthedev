@@ -6,7 +6,7 @@ type Props = {};
 
 function Navigation({}: Props) {
 	return (
-		<nav className="absolute bottom-0 w-full flex justify-center z-50">
+		<nav className="fixed bottom-0 w-full flex justify-center z-40">
 			<ul className="flex gap-0.5 text-[white] font-bold rounded-t-xl h-40 translate-y-32 lg:translate-y-28 ">
 				<li
                     className="cursor-pointer bg-[#a431eb] p-2 lg:p-4  peer-hover:opacity-60 rounded-tl-xl hover:-translate-y-6 transition-transform hover:bg-[#d187ff]" 

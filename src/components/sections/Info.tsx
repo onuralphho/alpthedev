@@ -39,7 +39,7 @@ const Info = () => {
 	return (
 		<div
 			id="section1"
-			className="flex  overflow-hidden relative lg:px-48 lg:gap-2 lg:pt-44  h-[100svh]   w-full pt-20 p-5 lg:p-10 bg-gradient-to-b from-[#0cfd9447]   ">
+			className="flex h-screen  relative lg:px-48 lg:gap-2 lg:pt-44   w-full pt-20 p-5 lg:p-10 bg-gradient-to-b from-[#0cfd9447]   ">
 			<div className="flex max-lg:flex-col gap-5">
 				<motion.div
 					ref={ref}
