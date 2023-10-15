@@ -95,7 +95,7 @@ const Info = () => {
 							scrollInto("section3");
 						}}
 						aria-label="discover"
-						className="p-4 w-max font-bold rounded-lg lg:text-xl text-white my-4 bg-[#a431eb] hover:bg-[#33b07a] transition-all">
+						className="p-4 w-max font-bold rounded-lg lg:text-xl text-white my-4 bg-[#a431eb] hover:bg-[#d187ff] transition-all">
 						Connect
 					</button>
 				</motion.div>

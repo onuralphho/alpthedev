@@ -9,14 +9,14 @@ function Navigation({}: Props) {
 		<nav className="absolute bottom-0 w-full flex justify-center z-50">
 			<ul className="flex gap-0.5 text-[white] font-bold rounded-t-xl h-40 translate-y-32 lg:translate-y-28 ">
 				<li
-                    className="cursor-pointer bg-[#a431eb] p-2 lg:p-4  peer-hover:opacity-60 rounded-tl-xl hover:-translate-y-6 transition-transform" 
+                    className="cursor-pointer bg-[#a431eb] p-2 lg:p-4  peer-hover:opacity-60 rounded-tl-xl hover:-translate-y-6 transition-transform hover:bg-[#d187ff]" 
 					onClick={() => {
 						scrollInto("section1");
 					}}>
 					About Me
 				</li>
 				<li
-                    className="cursor-pointer bg-[#a431eb] p-2 lg:p-4 peer-hover:opacity-60 hover:-translate-y-6 transition-transform"
+                    className="cursor-pointer bg-[#a431eb] p-2 lg:p-4 peer-hover:opacity-60 hover:-translate-y-6 transition-transform hover:bg-[#d187ff]"
 					onClick={() => {
 						scrollInto("section2");
 					}}>
@@ -24,7 +24,7 @@ function Navigation({}: Props) {
 				</li>
 
 				<li
-                    className="cursor-pointer bg-[#a431eb] p-2 lg:p-4 peer-hover:opacity-60 rounded-tr-xl hover:-translate-y-6 transition-transform"
+                    className="cursor-pointer bg-[#a431eb] p-2 lg:p-4 peer-hover:opacity-60 rounded-tr-xl hover:-translate-y-6 transition-transform hover:bg-[#d187ff]"
 					onClick={() => {
 						scrollInto("section3");
 					}}>
