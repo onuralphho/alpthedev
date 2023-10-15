@@ -4,14 +4,14 @@ import Journey from "@/components/sections/Journey";
 //?: should do SEO
 export default function Home() {
 	return (
-		<main className="main-container gap-4  overflow-x-hidden overflow-y-scroll h-screen mx-auto  flex flex-col  ">
-			<div className="main-item h-[100svh]">
+		<main className="main-container overflow-x-hidden overflow-y-scroll h-screen mx-auto  flex flex-col  ">
+			<div className="main-item ">
 				<Info />
 			</div>
-			<div className="main-item h-[100svh]">
+			<div className="main-item ">
 				<Journey />
 			</div>
-			<div className="main-item h-[100svh]">
+			<div className="main-item ">
 				<Contact />
 			</div>
 			<div className=" main-item sm:hidden"></div>

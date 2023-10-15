@@ -110,9 +110,7 @@ const Info = () => {
 				<CoreSkills />
 			</motion.div>
 
-			<PageShift way="down" info="Projects">
-				section2
-			</PageShift>
+			
 		</div>
 	);
 };

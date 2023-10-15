@@ -31,14 +31,11 @@ body {
 }
 
 .main-container {
-	scroll-snap-type: y mandatory;
+	
 	scroll-behavior: smooth;
 }
 
-.main-item {
-	scroll-snap-align: start;
-	scroll-snap-stop: always;
-}
+
 
 .social-icon {
 	@apply w-8 h-8 md:w-10 md:h-10 hover:scale-110 transition-all;
