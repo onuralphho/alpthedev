@@ -7,11 +7,12 @@ import Navigation from "@/components/sections/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	alternates:{canonical:"https://onuralpthedev.vercel.app"},
+	alternates: { canonical: "https://onuralpthedev.vercel.app" },
 	title: "Web Developer",
-	description: "Onuralp, a passionate software developer who loves crafting unique and functional web applications. Explore a portfolio showcasing skills and experiences across various projects.",
+	description:
+		"Onuralp, a passionate software developer who loves crafting unique and functional web applications. Explore a portfolio showcasing skills and experiences across various projects.",
 	verification: {
-		google: "google-site-verification=H5KCqVTa4IoEfC6gAUiy5g352hkeGiyAzXOEe9M2xEI"	
+		google: "google-site-verification=H5KCqVTa4IoEfC6gAUiy5g352hkeGiyAzXOEe9M2xEI",
 	},
 };
 export default function RootLayout({
@@ -22,26 +23,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div>
-					<div className="area">
-						<ul className="circles">
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ul>
-					</div>
-					<div className=" relative ">
-						<Header />
-						{children}
-						<Navigation/>
-					</div>
+				<div className="bg-[#000000b8]">
+					<Header />
+					{children}
+					<Navigation />
 				</div>
 			</body>
 		</html>

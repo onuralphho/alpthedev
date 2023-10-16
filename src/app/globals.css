@@ -26,87 +26,78 @@
 }
 
 body {
-	box-sizing: border-box;
-	overflow: hidden;
+	/* img size is 50x50 */
+	background: url("data:image/webp;base64,UklGRh4DAABXRUJQVlA4TBEDAAAvj8FjAAUs2XbbNgIJgASpZu9/s+3jYZyEoVMQ0X9HaBtJUgrmt+ANc0K2tqeeTTa09sYb2w5Dqey8wdV5k4IDF96548S8ieLAxju3HQYWG4d/QhUtUzISg6ES2Q0YrkJGGQfOZFRwYrKUcGAhIzUcWMbh31YXuHK7NMahil0MZ0rt0hSH0nZpCYeyixWcidulZRyqbuG/fz8pCv+1m0P92j1q1+ZQv3aP+rU71K7No37t2WH8Pg7/mmS4uOyFcSjRXX3A4gD2fRvd9WU2tHH4R4uh9XSKkAZD0XIHhqs+Tk44cF5oqTjxshDhwLLQos0BPA7/1nKgda56aD9hqFpOPeDa9CiGA5ueuuHEepSKA3c9dT1h4NLH4d/L9ufk2Z9vl1D//lxc+3N62WYc/hnDJSKbiMBQLJs4iB9MPmAH8ROwywYPsY3DP/f9kOOG0HU/RP77IXLdD9WXfWwc/r2vnt/Cf81Mjjv8z3FrKmhVTS1JhaFyajdguB7A2QesOHFq2QEsD+CKA+s4/EvkyXeSK99JyZXvJHLlO5Mr30m+fGfy5DuJxuHffOS4ffuz+PLP6tqfZXHtz+ran8W3P6tv87X6590QXNlOYxyq1LPiTMlOUxxK7bSEQ9WzOmxgOy07bFjH4d/76nkh/NfMKPxX1wQX16MyDqXlKDhTrkcVHErqUTMOVY7yMhv6OPxbXte/eHlZ/+Lb3vey/sW3g8HXn/Vr9W+y+jC/Lo9Ozjy6r3+xL4/+sv7Ft4znOPwrWeES7iw4VM79BowXd2YHE/cbk+PbdH6ZDWUc/oX/fZh/UfRhjuP7MM9Hzmg+cnjf85zqVPVhnpDfOczH74DeV88L4b9mRuG/5uN/8L/n60SYq3VUzMc6Q+ZjHS7TsU6d8L8P8498H+bwvw/zfLyn2Tf2Peam8T3/5uM9GOfjPTHD/xz3b2CF/5qPOaLNx5zdwv+5x/1FVPiv8H/ucRGVwn+F/3OPi6gU/iv8n3vcf/AK/xX+zz0uolL4r/B/7nH/wSv8V/g/97jwX++AuceF/3OPMwA=")
+		repeat 0 0;
+	-webkit-animation: bg-scrolling-reverse 10s infinite;
+	/* Safari 4+ */
+	-moz-animation: bg-scrolling-reverse 10s infinite;
+	/* Fx 5+ */
+	-o-animation: bg-scrolling-reverse 10s infinite;
+	/* Opera 12+ */
+	animation: bg-scrolling-reverse 10s infinite;
+	/* IE 10+ */
+	-webkit-animation-timing-function: linear;
+	-moz-animation-timing-function: linear;
+	-o-animation-timing-function: linear;
+	animation-timing-function: linear;
+	background-color: #121212;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Exo:100);
+
+@-webkit-keyframes bg-scrolling-reverse {
+	100% {
+		background-position: 400px 400px;
+	}
+}
+@-moz-keyframes bg-scrolling-reverse {
+	100% {
+		background-position: 400px 400px;
+	}
+}
+@-o-keyframes bg-scrolling-reverse {
+	100% {
+		background-position: 400px 400px;
+	}
+}
+@keyframes bg-scrolling-reverse {
+	100% {
+		background-position: 400px 400px;
+	}
+}
+@-webkit-keyframes bg-scrolling {
+	0% {
+		background-position: 400px 400px;
+	}
+}
+@-moz-keyframes bg-scrolling {
+	0% {
+		background-position: 400px 400px;
+	}
+}
+@-o-keyframes bg-scrolling {
+	0% {
+		background-position: 400px 400px;
+	}
+}
+@keyframes bg-scrolling {
+	0% {
+		background-position: 400px 400px;
+	}
 }
 
 .main-container {
-	
 	scroll-behavior: smooth;
 }
-
-
 
 .social-icon {
 	@apply w-8 h-8 md:w-10 md:h-10 hover:scale-110 transition-all;
 }
 
-.astroid-wrapper {
-	cursor: pointer;
-}
-
-.astroid {
-	left: 50%;
-	transform: translate(-50%, -50%);
-	max-height: 200px;
-	height: 0;
-	position: absolute;
-	cursor: unset;
-	user-select: none;
-	border-radius: 10px;
-	opacity: 0;
-	transition: all 0.5s;
-}
-
-.astroid-wrapper:hover > img {
-	opacity: 1;
-	max-height: 200px;
-	height: 5rem;
-}
-
-.astroid-wrapper:hover > img:nth-child(2) {
-	transform: translate(100px, -20px) rotate(360deg);
-}
-
-.astroid-wrapper:hover > img:nth-child(3) {
-	transform: translate(-170px, -20px) rotate(360deg);
-}
-.astroid-wrapper:hover > img:nth-child(4) {
-	transform: translate(-35px, 50px) rotate(360deg);
-}
-.astroid-wrapper:hover > img:nth-child(5) {
-	transform: translate(-120px, -140px) rotate(360deg);
-}
-.astroid-wrapper:hover > img:nth-child(6) {
-	transform: translate(50px, -140px) rotate(360deg);
-}
-
-@media screen and (max-width: 480px) {
-	.astroid-wrapper:hover > img:nth-child(4) {
-		transform: translate(-30px, -150px) rotate(360deg);
-	}
-	.astroid-wrapper:hover > img:nth-child(6) {
-		transform: translate(50px, -100px) rotate(360deg);
-	}
-	.astroid-wrapper:hover > img:nth-child(5) {
-		transform: translate(-120px, -110px) rotate(360deg);
-	}
-
-	.astroid {
-		height: auto;
-	}
-
-	.astroid-wrapper:hover > img {
-		opacity: 1;
-		max-height: 200px;
-		height: auto;
-	}
-}
-
 .area {
-	background-color: #121212;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -119,7 +110,6 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
 }
 
 .circles li {
