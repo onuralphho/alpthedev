@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-export default function sitemap(): MetadataRoute.Sitemap{
+export default function sitemap_index(): MetadataRoute.Sitemap{
 	return [
 		{
 			url: "https://onuralpthedev.vercel.app",
