@@ -1,7 +1,11 @@
-export default async function sitemap(){
-	const baseUrl = "https://onuralpthedev.vercel.app"
-	
+import { MetadataRoute } from 'next'
+export default function sitemap(): MetadataRoute.Sitemap{
 	return [
-		{url: baseUrl, lastModified: new Date()},
+		{
+			url: "https://onuralpthedev.vercel.app",
+			lastModified: new Date(),
+			changeFrequency: 'never',
+			priority: 1,
+		},
 	]
 }
