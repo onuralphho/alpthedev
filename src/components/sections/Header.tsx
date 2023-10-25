@@ -4,6 +4,7 @@ import { SiFiverr } from "react-icons/si";
 import { scrollInto } from "@/lib/scrollInto";
 import profilePicture from "@/assets/profile.jpg";
 import Image from "next/image";
+import Link from "next/link";
 const Header = () => {
 	return (
 		<header
@@ -41,29 +42,9 @@ const Header = () => {
 				</li>
 			</ul>
 			<div className="flex text-white font-bold items-center text-sm md:text-2xl gap-2 ">
-				<span
-					className="cursor-pointer hover:text-purple-300 transition-all"
-					onClick={() => {
-						scrollInto("section1");
-					}}>
-					About
-				</span>
+				<Link href="/">Home</Link>
 				<span>/</span>
-				<span
-					className="cursor-pointer hover:text-purple-300 transition-all"
-					onClick={() => {
-						scrollInto("section2");
-					}}>
-					Projects
-				</span>
-				<span>/</span>
-				<span
-					className="cursor-pointer hover:text-purple-300 transition-all"
-					onClick={() => {
-						scrollInto("section3");
-					}}>
-					Contact
-				</span>
+				<Link href="/blog">Blog</Link>
 			</div>
 		</header>
 	);
