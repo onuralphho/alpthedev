@@ -1,6 +1,6 @@
 "use client"
 import { createContext, useState, useContext } from "react";
-import { AlertContextType, IAlert } from "@/types/alertType";
+import { AlertContextType, IAlert } from "@/@types/alertType";
 const AlertContext = createContext<AlertContextType | null>(null);
 
 

@@ -20,6 +20,7 @@ export default function BlogsWrapper({ blogs }: Props) {
 			body: JSON.stringify({
 				content: "Test",
 				title: "Test Title",
+				userId: 1,
 			} as Blog),
 		});
 
