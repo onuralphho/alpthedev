@@ -35,10 +35,9 @@ function SignInForm() {
 					username: values.username,
 					password: values.password,
 					redirect: false,
-                    callbackUrl:"/admin"
 				});
+				router.push("/admin")
 				
-				console.log("signInAAAAAAAAAAAA", values);
 			}}>
 			{({ isSubmitting, handleSubmit }) => (
 				<Form
