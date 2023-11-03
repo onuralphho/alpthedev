@@ -3,13 +3,15 @@ import React from "react";
 import { type Blog } from "@prisma/client";
 import BlogCard from "./BlogCard";
 import { useRouter } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 type Props = {
 	blogs: Blog[];
 };
 
-export default function BlogsWrapper({ blogs }: Props) {
+export default async function BlogsWrapper({ blogs }: Props) {
 	const router = useRouter();
-
+	const session = await getServerSession(authOptions);
 	const create = async () => {
 		await fetch(`/api/blog`, {
 			method: "POST",
@@ -20,7 +22,7 @@ export default function BlogsWrapper({ blogs }: Props) {
 			body: JSON.stringify({
 				content: "Test",
 				title: "Test Title",
-				userId: 1,
+				userId: Number(session?.user.id),
 			} as Blog),
 		});
 
