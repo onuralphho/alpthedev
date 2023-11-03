@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
 		strategy: "jwt",
 	},
 
-	secret: process.env.JWT_SECRET,
+	secret: process.env.NEXT_PUBLIC_JWT_SECRET,
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
