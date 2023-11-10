@@ -7,7 +7,7 @@ export const POST = async (req: Request) => {
 		const data = await prisma.blog.create({
 			data: { content, title, userId: userId },
 		});
-		return NextResponse.json({ message: "Succes", data }, { status: 200 });
+		return NextResponse.json({ message: "Success", data }, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(
 			{ message: "Error while posting", error },
@@ -15,3 +15,4 @@ export const POST = async (req: Request) => {
 		);
 	}
 };
+

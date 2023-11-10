@@ -11,7 +11,11 @@ async function Admin() {
 	if (session?.user.role !== UserRoles.ADMIN) {
 		redirect("/blog");
 	}
-	const users = await prisma.user.findMany();
+	const users = await prisma.user.findMany({
+		include: {
+			blogs: true,
+		},
+	});
 
 	return (
 		<div className="pt-20 p-5 text-white gap-4">
