@@ -3,9 +3,9 @@ import prisma from "@/lib/db";
 
 export const POST = async (req: Request) => {
 	try {
-		const { content, title, userId } = await req.json();
+		const { content, title,description, userId,categoryId } = await req.json();
 		const data = await prisma.blog.create({
-			data: { content, title, userId: userId },
+			data: { content, title, userId: userId,description:description,categoryId:categoryId },
 		});
 		return NextResponse.json({ message: "Success", data }, { status: 200 });
 	} catch (error) {
