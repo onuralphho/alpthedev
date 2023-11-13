@@ -42,7 +42,7 @@ function UserTable({ users }: Props) {
 			headers: {
 				"Content-Type": "application/json",
 			},
-		});
+		});1
 		const data = await res.json();
 
 		if (data.success) {
@@ -64,7 +64,7 @@ function UserTable({ users }: Props) {
 				closeBox={alertCtx?.setAlert}
 			/>
 			<table className="w-full text-center rounded border">
-				<thead className="border">
+				<thead className="border table-fixed">
 					<tr className="font-bold">
 						{USER_TABLE_COLUMNS.map((column, index) => (
 							<td
@@ -76,9 +76,9 @@ function UserTable({ users }: Props) {
 						))}
 					</tr>
 				</thead>
-				<tbody>
-					{userData.map((user) => (
-						<tr key={user.id} className="border">
+				<tbody className="">
+					{userData.sort((a,b)=> a.id - b.id).map((user) => (
+						<tr key={user.id} className="border ">
 							<td className="border">
 								<input
 									onChange={(e) => {
