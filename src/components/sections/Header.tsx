@@ -1,21 +1,21 @@
 "use client";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
-import { scrollInto } from "@/lib/scrollInto";
-import profilePicture from "@/assets/profile.jpg";
-import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation"
 const Header = () => {
+	const pathname = usePathname();
 	return (
 		<header
 			id="navbar"
-			className="flex justify-between p-4 fixed z-[999]  w-full bg-transparent   transition-all">
+			className="flex justify-between p-4 fixed z-[999] w-full bg-transparent transition-all">
 			<ul className="flex gap-4 ">
 				<li>
 					<a
 						aria-label="GitHub"
 						target="_blank"
 						href="https://github.com/onuralphho/">
-						<BsGithub color="white" className="social-icon " />
+						<BsGithub color={pathname.startsWith("/blog") ? "black" :"white"} className="social-icon " />
 					</a>
 				</li>
 				<li>
@@ -40,30 +40,10 @@ const Header = () => {
 					</a>
 				</li>
 			</ul>
-			<div className="flex text-white font-bold items-center text-sm md:text-2xl gap-2 ">
-				<span
-					className="cursor-pointer hover:text-purple-300 transition-all"
-					onClick={() => {
-						scrollInto("section1");
-					}}>
-					About
-				</span>
+			<div className={`flex ${pathname.startsWith("/blog") ? "text-black" :"text-white"} font-bold items-center text-sm md:text-2xl gap-2 `}>
+				<Link href="/">Home</Link>
 				<span>/</span>
-				<span
-					className="cursor-pointer hover:text-purple-300 transition-all"
-					onClick={() => {
-						scrollInto("section2");
-					}}>
-					Projects
-				</span>
-				<span>/</span>
-				<span
-					className="cursor-pointer hover:text-purple-300 transition-all"
-					onClick={() => {
-						scrollInto("section3");
-					}}>
-					Contact
-				</span>
+				<Link href="/blog">Blog</Link>
 			</div>
 		</header>
 	);
