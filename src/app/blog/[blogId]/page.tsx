@@ -35,7 +35,7 @@ async function BlogDetails({ params }: { params: { blogId: string } }) {
 	return (
 		<div className=" bg-white text-black min-h-screen py-20">
 			<div className="max-w-3xl mx-auto p-4 space-y-4">
-				<h1 className="text-lg md:text-3xl lg:text-5xl xl:text-7xl font-extrabold">{blogDetails?.title}</h1>
+				<h1 className="text-3xl lg:text-5xl xl:text-7xl font-extrabold">{blogDetails?.title}</h1>
 				<div className="flex items-center gap-2">
 					<img
 						src={profilePicture.src}
