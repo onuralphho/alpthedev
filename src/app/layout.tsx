@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	alternates: { canonical: "https://onuralpthedev.vercel.app" },
-	title: "Web Developer",
+	title: { default: "The Dev" , template : '%s | The Dev'},
 	description:
 		"Onuralp, a passionate software developer who loves crafting unique and functional web applications. Explore a portfolio showcasing skills and experiences across various projects.",
 	verification: {

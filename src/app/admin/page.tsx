@@ -6,6 +6,13 @@ import { redirect } from "next/navigation";
 import { UserRoles } from "@/constants/RoleEnum";
 import prisma from "@/lib/db";
 import UserTable from "@/components/admin/UserTable";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Admin",
+	robots: { index: false, nocache: true, follow: false },
+};
+
 async function Admin() {
 	const session = await getServerSession(authOptions);
 	if (session?.user.role !== UserRoles.ADMIN) {

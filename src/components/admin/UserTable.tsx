@@ -5,6 +5,7 @@ import { MdDeleteForever, MdSave } from "react-icons/md";
 import { useAlertContext } from "@/providers/AlertProvider";
 import { sleep } from "@/tools/sleep";
 import AlertBox from "../AlertBox";
+import { UserRoles } from "@/constants/RoleEnum";
 
 type UserWithBlogs = User & {
 	blogs: Blog[];
@@ -26,7 +27,18 @@ const USER_TABLE_COLUMNS = [
 function UserTable({ users }: Props) {
 	const alertCtx = useAlertContext();
 	const [userData, setUserData] = useState(users);
+	const roles = Object.keys(UserRoles);
+
 	const dataChangeHandler = (e: ChangeEvent<HTMLInputElement>, userId: number) => {
+		const { name, value } = e.target;
+		const editedData = userData.map((item) =>
+			item.id === userId && name ? { ...item, [name]: value } : item
+		);
+
+		setUserData(editedData);
+	};
+
+	const dropDownChangeHandler = (e: ChangeEvent<HTMLSelectElement>, userId: number) => {
 		const { name, value } = e.target;
 		const editedData = userData.map((item) =>
 			item.id === userId && name ? { ...item, [name]: value } : item
@@ -42,7 +54,8 @@ function UserTable({ users }: Props) {
 			headers: {
 				"Content-Type": "application/json",
 			},
-		});1
+		});
+		1;
 		const data = await res.json();
 
 		if (data.success) {
@@ -77,44 +90,46 @@ function UserTable({ users }: Props) {
 					</tr>
 				</thead>
 				<tbody className="">
-					{userData.sort((a,b)=> a.id - b.id).map((user) => (
-						<tr key={user.id} className="border ">
-							<td className="border">
-								<input
-									onChange={(e) => {
-										dataChangeHandler(e, user.id);
-									}}
-									className="w-full p-2"
-									disabled
-									name="id"
-									type="text"
-									value={user.id}
-								/>
-							</td>
-							<td className="border">
-								<input
-									onChange={(e) => {
-										dataChangeHandler(e, user.id);
-									}}
-									className="w-full p-2"
-									name="username"
-									type="text"
-									value={user.username}
-								/>
-							</td>
-							<td className="border">
-								<input
-									onChange={(e) => {
-										dataChangeHandler(e, user.id);
-									}}
-									className="w-full p-2"
-									name="displayName"
-									type="text"
-									value={user.displayName ?? ""}
-								/>
-							</td>
-							<td className="border">
-								<input
+					{userData
+						.sort((a, b) => a.id - b.id)
+						.map((user) => (
+							<tr key={user.id} className="">
+								<td className="border">
+									<input
+										onChange={(e) => {
+											dataChangeHandler(e, user.id);
+										}}
+										className="w-full p-2"
+										disabled
+										name="id"
+										type="text"
+										value={user.id}
+									/>
+								</td>
+								<td className="border">
+									<input
+										onChange={(e) => {
+											dataChangeHandler(e, user.id);
+										}}
+										className="w-full p-2"
+										name="username"
+										type="text"
+										value={user.username}
+									/>
+								</td>
+								<td className="border">
+									<input
+										onChange={(e) => {
+											dataChangeHandler(e, user.id);
+										}}
+										className="w-full p-2"
+										name="displayName"
+										type="text"
+										value={user.displayName ?? ""}
+									/>
+								</td>
+								<td className="border">
+									{/* <input
 									onChange={(e) => {
 										dataChangeHandler(e, user.id);
 									}}
@@ -122,36 +137,50 @@ function UserTable({ users }: Props) {
 									name="role"
 									type="text"
 									value={user.role}
-								/>
-							</td>
-							<td className="border">
-								<input
-									onChange={(e) => {
-										dataChangeHandler(e, user.id);
-									}}
-									className="w-full p-2"
-									disabled
-									name="role"
-									type="text"
-									value={user.blogs.length}
-								/>
-							</td>
-							<td className="border">
-								<div className="flex gap-2 w-full justify-center">
-									<button
-										onClick={() => {
-											saveChanges(user);
+								/> */}
+									<select
+										onChange={(e) => {
+											dropDownChangeHandler(e, user.id);
 										}}
-										className="bg-green-500 hover:bg-green-700 transition-all text-white p-1 rounded">
-										<MdSave className="w-6 h-6" />
-									</button>
-									<button className="bg-red-500 hover:bg-red-700 transition-all text-white p-1 rounded">
-										<MdDeleteForever className="w-6 h-6" />
-									</button>
-								</div>
-							</td>
-						</tr>
-					))}
+										className="w-full p-2"
+										name="role"
+										value={user.role}
+										id="">
+										{roles.map((role, index) => (
+											<option key={index} value={role}>
+												{role}
+											</option>
+										))}
+									</select>
+								</td>
+								<td className="border">
+									<input
+										onChange={(e) => {
+											dataChangeHandler(e, user.id);
+										}}
+										className="w-full p-2"
+										disabled
+										name="role"
+										type="text"
+										value={user.blogs.length}
+									/>
+								</td>
+								<td className="border">
+									<div className="flex gap-2 w-full justify-center">
+										<button
+											onClick={() => {
+												saveChanges(user);
+											}}
+											className="bg-green-500 hover:bg-green-700 transition-all text-white p-1 rounded">
+											<MdSave className="w-6 h-6" />
+										</button>
+										<button className="bg-red-500 hover:bg-red-700 transition-all text-white p-1 rounded">
+											<MdDeleteForever className="w-6 h-6" />
+										</button>
+									</div>
+								</td>
+							</tr>
+						))}
 				</tbody>
 				<tfoot></tfoot>
 			</table>
