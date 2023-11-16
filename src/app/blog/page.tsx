@@ -2,7 +2,6 @@ import React from "react";
 import BlogsWrapper from "@/components/blogs/BlogsWrapper";
 import BlogCategoriesSide from "@/components/blogs/BlogCatagoriesSide";
 import prisma from "@/lib/db";
-import BlogSearchInput from "@/components/blogs/BlogSearchInput";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

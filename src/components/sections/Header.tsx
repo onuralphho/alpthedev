@@ -2,20 +2,23 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
 import Link from "next/link";
-import { usePathname } from "next/navigation"
+import { usePathname } from "next/navigation";
 const Header = () => {
 	const pathname = usePathname();
+	console.log(pathname)
 	return (
 		<header
 			id="navbar"
-			className={`flex justify-between p-4 fixed z-[99] w-full  transition-all ${pathname.startsWith("/blog") ?"" :"bg-transparent"}`}>
+			className={`flex justify-between p-4 fixed z-[99] w-full  transition-all ${
+				pathname.startsWith("/blog") ? "" : "bg-transparent"
+			}`}>
 			<ul className="flex gap-4 ">
 				<li>
-					<a
-						aria-label="GitHub"
-						target="_blank"
-						href="https://github.com/onuralphho/">
-						<BsGithub color={pathname.startsWith("/blog") ? "black" :"white"} className="social-icon " />
+					<a aria-label="GitHub" target="_blank" href="https://github.com/onuralphho/">
+						<BsGithub
+							color={pathname.startsWith("/blog") ? "black" : "white"}
+							className="social-icon "
+						/>
 					</a>
 				</li>
 				<li>
@@ -40,10 +43,19 @@ const Header = () => {
 					</a>
 				</li>
 			</ul>
-			<div className={`flex ${pathname.startsWith("/blog") ? "text-black" :"text-white"} font-bold items-center text-sm md:text-2xl gap-2 `}>
-				<Link href="/">Home</Link>
+			<div
+				className={`flex ${
+					pathname.startsWith("/blog") ? "text-black" : "text-white"
+				} font-bold items-center text-sm md:text-2xl gap-2 `}>
+				<Link className={`${pathname === "/" && "text-purple-500"}`} href="/">
+					Home
+				</Link>
 				<span>/</span>
-				<Link href="/blog">Blog</Link>
+				<Link
+					className={`${pathname.startsWith("/blog") && "text-purple-500"}`}
+					href="/blog">
+					Blog
+				</Link>
 			</div>
 		</header>
 	);
