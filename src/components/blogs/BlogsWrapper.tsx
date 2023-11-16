@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { BlogCategories, type Blog } from "@prisma/client";
 import BlogCard from "./BlogCard";
 import { useSearchParams } from "next/navigation";
+import BlogSearchInput from "./BlogSearchInput";
 
 type BlogsWithCategory = Blog & {
 	category: BlogCategories;
@@ -41,12 +42,17 @@ export default function BlogsWrapper({ blogs }: Props) {
 	}, [categoryFilter, searchFilter]);
 
 	return (
-		<div className="col-span-full sm:col-span-8 md:col-span-9 lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 overflow-auto max-h-screen w-full gap-5 p-2 mb-10">
-			{filteredBlogs
-				.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-				.map((blog) => (
-					<BlogCard key={blog.id} blog={blog} />
-				))}
-		</div>
+		<section className="col-span-full sm:col-span-8 md:col-span-9 lg:col-span-3 flex flex-col gap-2 ">
+			<div className="flex justify-end">
+				<BlogSearchInput />
+			</div>
+			<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3   w-full gap-5 mb-10">
+				{filteredBlogs
+					.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+					.map((blog) => (
+						<BlogCard key={blog.id} blog={blog} />
+					))}
+			</div>
+		</section>
 	);
 }

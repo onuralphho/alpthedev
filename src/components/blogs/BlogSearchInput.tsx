@@ -34,7 +34,7 @@ export default function BlogSearchInput({}: Props) {
 	};
 
 	return (
-		<label className="focus-within:border-purple-500 relative flex items-center gap-1 border rounded-lg">
+		<label className="focus-within:border-purple-500 relative flex items-center gap-1 border rounded-lg text-xs lg:text-lg">
 			<MdSearch className="w-8 h-8 ml-2 cursor-pointer text-gray-400" />
 			<input
 				ref={inputRef}

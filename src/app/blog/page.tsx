@@ -23,14 +23,9 @@ async function Blog() {
 	});
 	const blogCatagories = await prisma.blogCategories.findMany();
 	return (
-		<div className="h-screen pt-20 p-5 lg:p-10 lg:pt-20 space-y-2  bg-white text-black overflow-hidden">
-			<div className="flex justify-end">
-				<BlogSearchInput />
-			</div>
-			<section className="max-sm:flex max-sm:gap-4 max-sm:flex-col  sm:grid grid-cols-12 lg:grid-cols-4 gap-2 h-full">
-				<BlogCategoriesSide blogCategories={blogCatagories} />
-				<BlogsWrapper blogs={blogs} />
-			</section>
+		<div className="max-sm:flex max-sm:gap-4 max-sm:flex-col sm:grid grid-cols-12 lg:grid-cols-4 gap-2 h-full min-h-screen pt-20 p-5 lg:p-10 lg:pt-20 space-y-2  bg-white text-black ">
+			<BlogCategoriesSide blogCategories={blogCatagories} />
+			<BlogsWrapper blogs={blogs} />
 		</div>
 	);
 }
