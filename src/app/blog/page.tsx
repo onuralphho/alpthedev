@@ -6,7 +6,7 @@ import BlogSearchInput from "@/components/blogs/BlogSearchInput";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	alternates: { canonical: "https://onuralpthedev.vercel.app/blog" },
+	alternates: { canonical: `${process.env.NEXT_PUBLIC_URL}blog` },
 	title: "Blog",
 	description:
 		"Explore the dynamic world of web development through the lens of a skilled web developer. Dive into a curated collection of projects, tutorials, and insights that showcase expertise in front-end and back-end technologies. Stay updated on the latest trends, tools, and best practices, and witness the artistry of turning ideas into seamless digital experiences. Discover the creativity, innovation, and passion behind each line of code. Elevate your understanding of web development with a showcase that celebrates the craft of turning concepts into captivating online realities.",

@@ -1,7 +1,6 @@
 import prisma from "@/lib/db";
 import React from "react";
 import profilePicture from "@/assets/profile.jpg";
-import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: { blogId: string } }) {
 	try {
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }: { params: { blogId: string } 
 			title: blog.title,
 			description: blog.description,
 			alternates: {
-				canonical: `${process.env.NEXTAUTH_URL}blog/${blog.id}`,
+				canonical: `${process.env.NEXT_PUBLIC_URL}blog/${blog.id}`,
 			},
 		};
 	} catch (error) {
