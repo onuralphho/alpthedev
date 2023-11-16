@@ -69,6 +69,31 @@ function UserTable({ users }: Props) {
 		}
 	};
 
+	const deleteUser = async (user: UserWithBlogs) => {
+		const res = await fetch("api/user", {
+			method: "DELETE",
+			body: JSON.stringify(user),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const data = await res.json();
+
+		if (data.success) {
+			const newData = userData.filter((x) => x.id !== user.id);
+			setUserData(newData);
+
+			alertCtx?.setAlert({ shown: true, type: data.message });
+			await sleep(2000);
+			alertCtx?.setAlert({ shown: false, type: data.message });
+		} else {
+			alertCtx?.setAlert({ shown: true, type: data.message });
+			await sleep(2000);
+			alertCtx?.setAlert({ shown: false, type: data.message });
+		}
+	};
+
 	return (
 		<>
 			<AlertBox
@@ -111,7 +136,10 @@ function UserTable({ users }: Props) {
 										onChange={(e) => {
 											dataChangeHandler(e, user.id);
 										}}
-										className="w-full p-2"
+										className={`w-full p-2 ${
+											users.find((x) => x.id === user.id)?.username !==
+												user.username && "bg-yellow-400"
+										}`}
 										name="username"
 										type="text"
 										value={user.username}
@@ -122,27 +150,24 @@ function UserTable({ users }: Props) {
 										onChange={(e) => {
 											dataChangeHandler(e, user.id);
 										}}
-										className="w-full p-2"
+										className={`w-full p-2 ${
+											users.find((x) => x.id === user.id)?.displayName !==
+												user.displayName && "bg-yellow-400"
+										}`}
 										name="displayName"
 										type="text"
 										value={user.displayName ?? ""}
 									/>
 								</td>
 								<td className="border">
-									{/* <input
-									onChange={(e) => {
-										dataChangeHandler(e, user.id);
-									}}
-									className="w-full p-2"
-									name="role"
-									type="text"
-									value={user.role}
-								/> */}
 									<select
 										onChange={(e) => {
 											dropDownChangeHandler(e, user.id);
 										}}
-										className="w-full p-2"
+										className={`w-full p-2 ${
+											users.find((x) => x.id === user.id)?.role !==
+												user.role && "bg-yellow-400"
+										}`}
 										name="role"
 										value={user.role}
 										id="">
@@ -174,7 +199,11 @@ function UserTable({ users }: Props) {
 											className="bg-green-500 hover:bg-green-700 transition-all text-white p-1 rounded">
 											<MdSave className="w-6 h-6" />
 										</button>
-										<button className="bg-red-500 hover:bg-red-700 transition-all text-white p-1 rounded">
+										<button
+											onClick={() => {
+												deleteUser(user);
+											}}
+											className="bg-red-500 hover:bg-red-700 transition-all text-white p-1 rounded">
 											<MdDeleteForever className="w-6 h-6" />
 										</button>
 									</div>
