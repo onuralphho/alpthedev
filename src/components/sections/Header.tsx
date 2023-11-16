@@ -8,7 +8,7 @@ const Header = () => {
 	return (
 		<header
 			id="navbar"
-			className={`flex justify-between p-4 fixed z-[999] w-full  transition-all ${pathname.startsWith("/blog") ?"bg-white" :"bg-transparent"}`}>
+			className={`flex justify-between p-4 fixed z-[99] w-full  transition-all ${pathname.startsWith("/blog") ?"" :"bg-transparent"}`}>
 			<ul className="flex gap-4 ">
 				<li>
 					<a
