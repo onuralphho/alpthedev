@@ -3,6 +3,8 @@ import BlogsWrapper from "@/components/blogs/BlogsWrapper";
 import BlogCategoriesSide from "@/components/blogs/BlogCatagoriesSide";
 import prisma from "@/lib/db";
 import { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export const metadata: Metadata = {
 	alternates: { canonical: `${process.env.NEXT_PUBLIC_URL}blog` },
@@ -15,16 +17,20 @@ export const metadata: Metadata = {
 };
 
 async function Blog() {
+	const session = await getServerSession(authOptions);
 	const blogs = await prisma.blog.findMany({
 		include: {
 			category: true,
+			user: true,
 		},
 	});
 	const blogCatagories = await prisma.blogCategories.findMany();
 	return (
-		<div className="max-sm:flex max-sm:gap-4 max-sm:flex-col sm:grid grid-cols-12 lg:grid-cols-4 gap-2 h-full min-h-screen pt-20 p-5 lg:p-10 lg:pt-20 space-y-2  bg-white text-black ">
-			<BlogCategoriesSide blogCategories={blogCatagories} />
-			<BlogsWrapper blogs={blogs} />
+		<div className="min-h-screen pt-20 p-5 lg:p-10 lg:pt-20 bg-white text-black ">
+			<div className="container max-w-[900px] mx-auto flex gap-2 max-sm:flex-col">
+				<BlogCategoriesSide session={session} blogCategories={blogCatagories} />
+				<BlogsWrapper blogs={blogs} />
+			</div>
 		</div>
 	);
 }

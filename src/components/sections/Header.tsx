@@ -10,7 +10,7 @@ const Header = () => {
 		<header
 			id="navbar"
 			className={`flex justify-between p-4 fixed z-[99] w-full  transition-all ${
-				pathname.startsWith("/blog") ? "" : "bg-transparent"
+				pathname === "/blog" ? "bg-white" : "bg-transparent"
 			}`}>
 			<ul className="flex gap-4 ">
 				<li>
@@ -46,13 +46,13 @@ const Header = () => {
 			<div
 				className={`flex ${
 					pathname.startsWith("/blog") ? "text-black" : "text-white"
-				} font-bold items-center text-sm md:text-2xl gap-2 `}>
+				} font-bold items-center text-lg md:text-2xl gap-2 `}>
 				<Link className={`${pathname === "/" && "text-purple-500"}`} href="/">
 					Home
 				</Link>
 				<span>/</span>
 				<Link
-					className={`${pathname.startsWith("/blog") && "text-purple-500"}`}
+					className={`${pathname === "/blog" && "text-purple-500"}`}
 					href="/blog">
 					Blog
 				</Link>
