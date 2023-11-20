@@ -5,7 +5,6 @@ const months = [
 
 export const dateformatter = (date: Date) => {
 	const currentYear = new Date().getUTCFullYear();
-	console.log(date);
 	const day = date.getUTCDate();
 	const monthIndex = date.getUTCMonth();
 	const year = date.getUTCFullYear();
