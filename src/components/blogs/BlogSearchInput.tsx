@@ -30,12 +30,10 @@ export default function BlogSearchInput({}: Props) {
 
 	const searchInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		router.push(`?search=${event.target.value}`);
-        
 	};
 
 	return (
-		<label className="focus-within:border-purple-500 relative flex items-center gap-1 border rounded-lg text-xs lg:text-lg">
-			<MdSearch className="w-8 h-8 ml-2 cursor-pointer text-gray-400" />
+		<label className="focus-within:border-purple-500 relative flex flex-row-reverse items-center gap-1 border rounded-lg text-xs lg:text-lg">
 			<input
 				ref={inputRef}
 				className="p-2 px-1 peer z-10 bg-transparent outline-none"
@@ -43,6 +41,7 @@ export default function BlogSearchInput({}: Props) {
 				type="text"
 				onChange={searchInputHandler}
 			/>
+			<MdSearch className="w-8 h-8 ml-2 cursor-pointer text-purple-500 peer-placeholder-shown:text-gray-400" />
 
 			<span className="peer-placeholder-shown:opacity-100 opacity-0 absolute left-12 top-1/2 transform -translate-y-1/2 text-gray-400">
 				Type <span className="border border-gray-400 px-1.5 rounded ">/</span> for search
