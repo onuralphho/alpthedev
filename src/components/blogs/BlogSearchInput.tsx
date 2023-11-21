@@ -33,7 +33,7 @@ export default function BlogSearchInput({}: Props) {
 	};
 
 	return (
-		<label className="focus-within:border-purple-500 relative flex flex-row-reverse items-center gap-1 border rounded-lg text-xs lg:text-lg">
+		<label className="focus-within:border-purple-500 relative flex flex-row-reverse items-center gap-1 border rounded-lg text-xs lg:text-base">
 			<input
 				ref={inputRef}
 				className="p-2 px-1 peer z-10 bg-transparent outline-none"
