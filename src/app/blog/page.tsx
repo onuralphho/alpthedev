@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 async function Blog() {
-	const session = await getServerSession(authOptions);
+	// const session = await getServerSession(authOptions);
 	const blogs = await prisma.blog.findMany({
 		include: {
 			category: true,
@@ -28,7 +28,7 @@ async function Blog() {
 	return (
 		<div className="min-h-screen pt-20 p-5 lg:p-10 lg:pt-20 bg-white text-black ">
 			<div className="container max-w-[900px] mx-auto flex gap-2 max-sm:flex-col">
-				<BlogCategoriesSide session={session} blogCategories={blogCatagories} />
+				<BlogCategoriesSide session={null} blogCategories={blogCatagories} />
 				<BlogsWrapper blogs={blogs} />
 			</div>
 		</div>
