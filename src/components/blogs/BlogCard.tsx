@@ -21,7 +21,7 @@ function BlogCard({ blog, index }: Props) {
 						alt=""
 					/>
 					<span>{blog.user.displayName} |</span>
-					<span>{dateformatter(blog.createdAt)}</span>
+					{/* <span>{dateformatter(blog.createdAt)}</span> */}
 				</div>
 				<div className="h-full flex justify-between">
 					<div className="flex flex-col w-full h-full p-2">
