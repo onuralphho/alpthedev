@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 const Header = () => {
 	const pathname = usePathname();
-	console.log(pathname)
 	return (
 		<header
 			id="navbar"

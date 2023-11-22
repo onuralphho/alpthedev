@@ -36,8 +36,7 @@ function SignInForm() {
 					password: values.password,
 					redirect: false,
 				});
-				router.push("/admin")
-				
+				router.push("/admin");
 			}}>
 			{({ isSubmitting, handleSubmit }) => (
 				<Form
@@ -55,11 +54,7 @@ function SignInForm() {
 							name="username"
 							placeholder="Username"
 						/>
-						<ErrorMessage
-							className="text-red-500"
-							name="username"
-							component="div"
-						/>
+						<ErrorMessage className="text-red-500" name="username" component="div" />
 					</label>
 					<label>
 						<Field
@@ -69,11 +64,7 @@ function SignInForm() {
 							name="password"
 							placeholder="Password"
 						/>
-						<ErrorMessage
-							className="text-red-500"
-							name="password"
-							component="div"
-						/>
+						<ErrorMessage className="text-red-500" name="password" component="div" />
 					</label>
 					<button
 						className="bg-purple-500 p-2 text-white rounded-lg disabled:bg-slate-600"

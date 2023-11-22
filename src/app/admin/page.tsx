@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 async function Admin() {
 	const session = await getServerSession(authOptions);
-	if (session?.user.role !== UserRoles.ADMIN) {
+		if (session?.user.role !== UserRoles.ADMIN) {
 		redirect("/blog");
 	}
 	const users = await prisma.user.findMany({
@@ -30,7 +30,7 @@ async function Admin() {
 				<h1 className="text-4xl">ADMIN</h1>
 				<div className="flex gap-5 items-end">
 					{session?.user.name}
-					<SignOutButton />
+					<SignOutButton session={session} />
 				</div>
 			</section>
 			<section>
