@@ -14,17 +14,34 @@ export const metadata: Metadata = {
 	},
 };
 
-async function Blog() {
+async function Blog({
+	searchParams,
+}: {
+	searchParams?: { [key: string]: string | string[] | undefined };
+}) {
 	const blogs = await prisma.blog.findMany({
+		where: {
+			title: {
+				contains: searchParams?.search as string,
+			},
+
+			category: {
+				name: {
+					contains: searchParams?.category as string,
+				},
+			},
+		},
+
 		include: {
 			category: true,
 			user: true,
 		},
 	});
+
 	const blogCatagories = await prisma.blogCategories.findMany();
 	return (
 		<div className="min-h-screen pt-20 p-5 lg:p-10 lg:pt-20 bg-white text-black ">
-			<div className="container max-w-[900px] mx-auto flex gap-2 max-sm:flex-col">
+			<div className="container max-w-4xl mx-auto flex gap-2 max-sm:flex-col">
 				<BlogCategoriesSide blogCategories={blogCatagories} />
 				<BlogsWrapper blogs={blogs} />
 			</div>

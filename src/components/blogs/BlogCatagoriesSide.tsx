@@ -55,6 +55,16 @@ function BlogCatagoriesSide({ blogCategories }: Props) {
 							{category.name}
 						</li>
 					))}
+					<li>
+					<li
+							onClick={() => {
+								router.push(`/blog`);
+							}}
+							className={`bg-red-100 p-2 rounded cursor-pointer `}
+							>
+							Clear
+						</li>
+					</li>
 				</ul>
 			</div>
 		</aside>

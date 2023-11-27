@@ -17,27 +17,7 @@ export default function BlogsWrapper({ blogs }: Props) {
 	const searchFilter = searchParams.get("search");
 	const [filteredBlogs, setFilteredBlogs] = useState(blogs);
 
-	const filterHandler = () => {
-		let filteredResult = blogs;
 
-		if (categoryFilter) {
-			filteredResult = filteredResult.filter((blog) => blog.category.name === categoryFilter);
-		}
-
-		if (searchFilter) {
-			filteredResult = filteredResult.filter(
-				(blog) =>
-					blog.title.toLowerCase().includes(searchFilter) ||
-					blog.description.toLowerCase().includes(searchFilter)
-			);
-		}
-
-		setFilteredBlogs(filteredResult);
-	};
-
-	useEffect(() => {
-		filterHandler();
-	}, [categoryFilter, searchFilter]);
 
 	return (
 		<section className="w-full flex flex-col gap-2 ">
@@ -45,7 +25,7 @@ export default function BlogsWrapper({ blogs }: Props) {
 				<BlogSearchInput />
 			</div>
 			<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-12   w-full gap-2 mb-10">
-				{filteredBlogs
+				{blogs
 					.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
 					.map((blog,index) => (
 						<BlogCard key={blog.id} blog={blog} index={index} />
