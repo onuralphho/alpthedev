@@ -7,6 +7,7 @@ import { UserRoles } from "@/constants/RoleEnum";
 import prisma from "@/lib/db";
 import UserTable from "@/components/admin/UserTable";
 import { Metadata } from "next";
+import Main from "@/components/admin/Main";
 
 export const metadata: Metadata = {
 	title: "Admin",
@@ -15,10 +16,9 @@ export const metadata: Metadata = {
 
 async function Admin() {
 	const session = await getServerSession(authOptions);
-		if (session?.user.role !== UserRoles.ADMIN) {
+	if (session?.user.role !== UserRoles.ADMIN) {
 		redirect("/blog");
 	}
-
 
 	return (
 		<div className="pt-20 p-5 text-white gap-4">
@@ -29,14 +29,7 @@ async function Admin() {
 					<SignOutButton session={session} />
 				</div>
 			</section>
-			<section>
-				<div className="flex flex-col">
-					<h2>Users</h2>
-					<div className="bg-white rounded w-full text-black p-2">
-						<UserTable />
-					</div>
-				</div>
-			</section>
+			<Main />
 		</div>
 	);
 }

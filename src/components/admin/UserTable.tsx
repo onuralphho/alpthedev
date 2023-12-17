@@ -6,6 +6,7 @@ import { useAlertContext } from "@/providers/AlertProvider";
 import { sleep } from "@/tools/sleep";
 import AlertBox from "../AlertBox";
 import { UserRoles } from "@/constants/RoleEnum";
+import Pagination from "./Pagination";
 
 type UserWithBlogs = User & {
 	blogs: Blog[];
@@ -23,10 +24,11 @@ const USER_TABLE_COLUMNS = [
 function UserTable() {
 	const alertCtx = useAlertContext();
 	const [userData, setUserData] = useState<UserWithBlogs[] | null>();
-	const [dbUserData, setDbUserData] =  useState<UserWithBlogs[]| null>();
+	const [dbUserData, setDbUserData] = useState<UserWithBlogs[] | null>();
+	const [totalCount, setTotalCount] = useState(0);
 	const [pagination, setPagination] = useState({
 		skip: 0,
-		take: 5,
+		take: 10,
 	});
 	const roles = Object.keys(UserRoles);
 
@@ -100,8 +102,9 @@ function UserTable() {
 		const fetchUser = async () => {
 			const res = await fetch(`api/user?skip=${pagination.skip}&take=${pagination.take}`);
 			const data = await res.json();
-			setUserData(data.data);
-			setDbUserData(data.data);
+			setUserData(data.data.users);
+			setDbUserData(data.data.users);
+			setTotalCount(data.data.totalCount);
 		};
 		fetchUser();
 	}, [pagination]);
@@ -127,127 +130,114 @@ function UserTable() {
 					</tr>
 				</thead>
 				<tbody className="">
-					{userData
-					
-						?.map((user) => (
-							<tr key={user.id} className="">
-								<td className="border">
-									<input
-										onChange={(e) => {
-											dataChangeHandler(e, user.id);
+					{userData?.map((user) => (
+						<tr key={user.id} className="">
+							<td className="border">
+								<input
+									onChange={(e) => {
+										dataChangeHandler(e, user.id);
+									}}
+									className="w-full p-2"
+									disabled
+									name="id"
+									type="text"
+									value={user.id}
+								/>
+							</td>
+							<td className="border">
+								<input
+									onChange={(e) => {
+										dataChangeHandler(e, user.id);
+									}}
+									className={`w-full p-2 ${
+										dbUserData?.find((x) => x.id === user.id)?.username !==
+											user.username && "bg-yellow-400"
+									}`}
+									name="username"
+									type="text"
+									value={user.username}
+								/>
+							</td>
+							<td className="border">
+								<input
+									onChange={(e) => {
+										dataChangeHandler(e, user.id);
+									}}
+									className={`w-full p-2 ${
+										dbUserData?.find((x) => x.id === user.id)?.displayName !==
+											user.displayName && "bg-yellow-400"
+									}`}
+									name="displayName"
+									type="text"
+									value={user.displayName ?? ""}
+								/>
+							</td>
+							<td className="border">
+								<select
+									onChange={(e) => {
+										dropDownChangeHandler(e, user.id);
+									}}
+									className={`w-full p-2 ${
+										dbUserData?.find((x) => x.id === user.id)?.role !==
+											user.role && "bg-yellow-400"
+									}`}
+									name="role"
+									value={user.role}
+									id="">
+									{roles.map((role, index) => (
+										<option key={index} value={role}>
+											{role}
+										</option>
+									))}
+								</select>
+							</td>
+							<td className="border">
+								<input
+									onChange={(e) => {
+										dataChangeHandler(e, user.id);
+									}}
+									className="w-full p-2"
+									disabled
+									name="role"
+									type="text"
+									value={user.blogs.length}
+								/>
+							</td>
+							<td className="border">
+								<div className="flex gap-2 w-full justify-center">
+									<button
+										onClick={() => {
+											saveChanges(user);
 										}}
-										className="w-full p-2"
-										disabled
-										name="id"
-										type="text"
-										value={user.id}
-									/>
-								</td>
-								<td className="border">
-									<input
-										onChange={(e) => {
-											dataChangeHandler(e, user.id);
+										className="bg-green-500 hover:bg-green-700 transition-all text-white p-1 rounded">
+										<MdSave className="w-6 h-6" />
+									</button>
+									<button
+										onClick={() => {
+											deleteUser(user);
 										}}
-										className={`w-full p-2 ${
-											dbUserData?.find((x) => x.id === user.id)?.username !==
-												user.username && "bg-yellow-400"
-										}`}
-										name="username"
-										type="text"
-										value={user.username}
-									/>
-								</td>
-								<td className="border">
-									<input
-										onChange={(e) => {
-											dataChangeHandler(e, user.id);
-											
-										}}
-										className={`w-full p-2 ${
-											dbUserData?.find((x) => x.id === user.id)?.displayName !==
-												user.displayName && "bg-yellow-400"
-										}`}
-										name="displayName"
-										type="text"
-										value={user.displayName ?? ""}
-									/>
-								</td>
-								<td className="border">
-									<select
-										onChange={(e) => {
-											dropDownChangeHandler(e, user.id);
-										}}
-										className={`w-full p-2 ${
-											dbUserData?.find((x) => x.id === user.id)?.role !==
-												user.role && "bg-yellow-400"
-										}`}
-										name="role"
-										value={user.role}
-										id="">
-										{roles.map((role, index) => (
-											<option key={index} value={role}>
-												{role}
-											</option>
-										))}
-									</select>
-								</td>
-								<td className="border">
-									<input
-										onChange={(e) => {
-											dataChangeHandler(e, user.id);
-										}}
-										className="w-full p-2"
-										disabled
-										name="role"
-										type="text"
-										value={user.blogs.length}
-									/>
-								</td>
-								<td className="border">
-									<div className="flex gap-2 w-full justify-center">
-										<button
-											onClick={() => {
-												saveChanges(user);
-											}}
-											className="bg-green-500 hover:bg-green-700 transition-all text-white p-1 rounded">
-											<MdSave className="w-6 h-6" />
-										</button>
-										<button
-											onClick={() => {
-												deleteUser(user);
-											}}
-											className="bg-red-500 hover:bg-red-700 transition-all text-white p-1 rounded">
-											<MdDeleteForever className="w-6 h-6" />
-										</button>
-									</div>
-								</td>
-							</tr>
-						))}
+										className="bg-red-500 hover:bg-red-700 transition-all text-white p-1 rounded">
+										<MdDeleteForever className="w-6 h-6" />
+									</button>
+								</div>
+							</td>
+						</tr>
+					))}
 				</tbody>
 				<tfoot>
 					{userData && (
 						<tr>
-							<td className="flex gap-2">
-								<button
-									onClick={() => {
+							<td className="flex gap-2 m-2 ">
+								<Pagination
+									itemsPerPage={pagination.take}
+									totalCount={totalCount}
+									goToPage={(pageNum: number) => {
 										setPagination((prev) => ({
-											skip: prev.skip - prev.take,
+											skip: (pageNum - 1) * prev.take,
 											take: prev.take,
 										}));
 									}}
-									className="border rounded px-3 m-2">
-									{"<"}
-								</button>
-								<button
-									onClick={() => {
-										setPagination((prev) => ({
-											skip: prev.skip + prev.take,
-											take: prev.take,
-										}));
-									}}
-									className="border rounded px-3 m-2">
-									{">"}
-								</button>
+								/>
 							</td>
 						</tr>
 					)}

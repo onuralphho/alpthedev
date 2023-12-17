@@ -22,7 +22,9 @@ export const GET = async (req: Request) => {
 				blogs: true,
 			},
 		});
-		return NextResponse.json({ message: "Success", success: true, data }, { status: 200 });
+		const count = await prisma.user.count();
+		
+		return NextResponse.json({ message: "Success", success: true, data:{users:data,totalCount: count} }, { status: 200 });
 	} catch (error) {
 		return NextResponse.json(
 			{ message: "Error while getting users", success: false, error },
@@ -32,8 +34,10 @@ export const GET = async (req: Request) => {
 };
 
 export const PUT = async (req: Request) => {
-	if (false) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-
+	const session = await getServerSession(authOptions);
+	if (session?.user.role !== UserRoles.ADMIN) {
+		return NextResponse.json({ message: "Unauthorized", success: false }, { status: 401 });
+	}
 	try {
 		const { id, displayName, username, role } = await req.json();
 		const data = await prisma.user.update({
@@ -50,6 +54,10 @@ export const PUT = async (req: Request) => {
 };
 
 export const DELETE = async (req: Request) => {
+	const session = await getServerSession(authOptions);
+		if (session?.user.role !== UserRoles.ADMIN) {
+			return NextResponse.json({ message: "Unauthorized", success: false }, { status: 401 });
+		}
 	try {
 		const { id } = await req.json();
 		const data = await prisma.user.delete({
