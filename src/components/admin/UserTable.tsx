@@ -11,10 +11,6 @@ type UserWithBlogs = User & {
 	blogs: Blog[];
 };
 
-type Props = {
-	users: UserWithBlogs[];
-};
-
 const USER_TABLE_COLUMNS = [
 	{ name: "id", width: "3" },
 	{ name: "username", width: "20" },
@@ -24,14 +20,19 @@ const USER_TABLE_COLUMNS = [
 	{ name: "actions", width: "5" },
 ];
 
-function UserTable({ users }: Props) {
+function UserTable() {
 	const alertCtx = useAlertContext();
-	const [userData, setUserData] = useState(users);
+	const [userData, setUserData] = useState<UserWithBlogs[] | null>();
+	const [dbUserData, setDbUserData] =  useState<UserWithBlogs[]| null>();
+	const [pagination, setPagination] = useState({
+		skip: 0,
+		take: 5,
+	});
 	const roles = Object.keys(UserRoles);
 
 	const dataChangeHandler = (e: ChangeEvent<HTMLInputElement>, userId: number) => {
 		const { name, value } = e.target;
-		const editedData = userData.map((item) =>
+		const editedData = userData?.map((item) =>
 			item.id === userId && name ? { ...item, [name]: value } : item
 		);
 
@@ -40,7 +41,7 @@ function UserTable({ users }: Props) {
 
 	const dropDownChangeHandler = (e: ChangeEvent<HTMLSelectElement>, userId: number) => {
 		const { name, value } = e.target;
-		const editedData = userData.map((item) =>
+		const editedData = userData?.map((item) =>
 			item.id === userId && name ? { ...item, [name]: value } : item
 		);
 
@@ -59,6 +60,7 @@ function UserTable({ users }: Props) {
 		const data = await res.json();
 
 		if (data.success) {
+			setDbUserData(userData);
 			alertCtx?.setAlert({ shown: true, type: data.message });
 			await sleep(2000);
 			alertCtx?.setAlert({ shown: false, type: data.message });
@@ -81,7 +83,7 @@ function UserTable({ users }: Props) {
 		const data = await res.json();
 
 		if (data.success) {
-			const newData = userData.filter((x) => x.id !== user.id);
+			const newData = userData?.filter((x) => x.id !== user.id);
 			setUserData(newData);
 
 			alertCtx?.setAlert({ shown: true, type: data.message });
@@ -93,6 +95,16 @@ function UserTable({ users }: Props) {
 			alertCtx?.setAlert({ shown: false, type: data.message });
 		}
 	};
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			const res = await fetch(`api/user?skip=${pagination.skip}&take=${pagination.take}`);
+			const data = await res.json();
+			setUserData(data.data);
+			setDbUserData(data.data);
+		};
+		fetchUser();
+	}, [pagination]);
 
 	return (
 		<>
@@ -116,8 +128,8 @@ function UserTable({ users }: Props) {
 				</thead>
 				<tbody className="">
 					{userData
-						.sort((a, b) => a.id - b.id)
-						.map((user) => (
+					
+						?.map((user) => (
 							<tr key={user.id} className="">
 								<td className="border">
 									<input
@@ -137,7 +149,7 @@ function UserTable({ users }: Props) {
 											dataChangeHandler(e, user.id);
 										}}
 										className={`w-full p-2 ${
-											users.find((x) => x.id === user.id)?.username !==
+											dbUserData?.find((x) => x.id === user.id)?.username !==
 												user.username && "bg-yellow-400"
 										}`}
 										name="username"
@@ -149,9 +161,10 @@ function UserTable({ users }: Props) {
 									<input
 										onChange={(e) => {
 											dataChangeHandler(e, user.id);
+											
 										}}
 										className={`w-full p-2 ${
-											users.find((x) => x.id === user.id)?.displayName !==
+											dbUserData?.find((x) => x.id === user.id)?.displayName !==
 												user.displayName && "bg-yellow-400"
 										}`}
 										name="displayName"
@@ -165,7 +178,7 @@ function UserTable({ users }: Props) {
 											dropDownChangeHandler(e, user.id);
 										}}
 										className={`w-full p-2 ${
-											users.find((x) => x.id === user.id)?.role !==
+											dbUserData?.find((x) => x.id === user.id)?.role !==
 												user.role && "bg-yellow-400"
 										}`}
 										name="role"
@@ -211,7 +224,34 @@ function UserTable({ users }: Props) {
 							</tr>
 						))}
 				</tbody>
-				<tfoot></tfoot>
+				<tfoot>
+					{userData && (
+						<tr>
+							<td className="flex gap-2">
+								<button
+									onClick={() => {
+										setPagination((prev) => ({
+											skip: prev.skip - prev.take,
+											take: prev.take,
+										}));
+									}}
+									className="border rounded px-3 m-2">
+									{"<"}
+								</button>
+								<button
+									onClick={() => {
+										setPagination((prev) => ({
+											skip: prev.skip + prev.take,
+											take: prev.take,
+										}));
+									}}
+									className="border rounded px-3 m-2">
+									{">"}
+								</button>
+							</td>
+						</tr>
+					)}
+				</tfoot>
 			</table>
 		</>
 	);

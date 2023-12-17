@@ -4,6 +4,7 @@ import profilePicture from "@/assets/profile.jpg";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import rehypeSanitize from "rehype-sanitize";
 import "highlight.js/styles/github.css";
 
 export async function generateMetadata({ params }: { params: { blogId: string } }) {
@@ -60,7 +61,10 @@ async function BlogDetails({ params }: { params: { blogId: string } }) {
 						__html: blogDetails?.content ?? "<div>Bir Hata Oluştu...</div>",
 					}}></div> */}
 
-				<Markdown className="markdown-body" rehypePlugins={[rehypeHighlight]} remarkPlugins={[remarkGfm]}>
+				<Markdown
+					className="markdown-body"
+					rehypePlugins={[rehypeSanitize,rehypeHighlight]}
+					remarkPlugins={[remarkGfm]}>
 					{blogDetails?.content}
 				</Markdown>
 			</div>

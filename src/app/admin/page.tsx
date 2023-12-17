@@ -18,11 +18,7 @@ async function Admin() {
 		if (session?.user.role !== UserRoles.ADMIN) {
 		redirect("/blog");
 	}
-	const users = await prisma.user.findMany({
-		include: {
-			blogs: true,
-		},
-	});
+
 
 	return (
 		<div className="pt-20 p-5 text-white gap-4">
@@ -37,7 +33,7 @@ async function Admin() {
 				<div className="flex flex-col">
 					<h2>Users</h2>
 					<div className="bg-white rounded w-full text-black p-2">
-						<UserTable users={users} />
+						<UserTable />
 					</div>
 				</div>
 			</section>
