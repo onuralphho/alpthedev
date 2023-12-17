@@ -42,6 +42,7 @@ body {
 	animation-timing-function: linear;
 }
 
+
 @import url(https://fonts.googleapis.com/css?family=Exo:100);
 
 @-webkit-keyframes bg-scrolling-reverse {
@@ -361,6 +362,7 @@ body {
 	background: linear-gradient(90deg, rgba(121, 33, 199, 0.544) 0%, rgba(255,255,255,1) 100%);
 	transition: width 0.5s ease-in-out;
 }
+
 
 
 

@@ -17,6 +17,7 @@
     "draft-js": "^0.11.7",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",
+    "github-markdown-css": "^5.5.0",
     "next": "13.5.4",
     "next-auth": "^4.24.4",
     "react": "^18",
@@ -24,7 +25,10 @@
     "react-icons": "^4.11.0",
     "react-intersection-observer": "^9.5.2",
     "react-lazy-load-image-component": "^1.6.0",
+    "react-markdown": "^9.0.1",
     "react-parallax-tilt": "^1.7.170",
+    "rehype-highlight": "^7.0.0",
+    "remark-gfm": "^4.0.0",
     "swiper": "^10.3.1",
     "vercel": "^32.5.0"
   },
