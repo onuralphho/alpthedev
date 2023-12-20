@@ -21,9 +21,8 @@ async function Admin() {
 	}
 
 	return (
-		<div className="pt-20 p-5 text-white gap-4">
-			<section className="flex justify-between">
-				<h1 className="text-4xl">ADMIN</h1>
+		<div className="pt-20 space-y-2 text-white gap-4">
+			<section className="flex justify-end p-2">
 				<div className="flex gap-5 items-end">
 					{session?.user.name}
 					<SignOutButton session={session} />

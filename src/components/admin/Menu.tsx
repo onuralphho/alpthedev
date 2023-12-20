@@ -12,15 +12,15 @@ const MENU_DATA = [
 
 function Menu({ changeTab }: Props) {
 	return (
-		<div className="bg-white rounded p-2 w-80 h-screen">
-			<ul className="space-y-2">
+		<div className="bg-[#e8e8e8] rounded-r p-1 w-80 h-full">
+			<ul className="space-y-1">
 				{MENU_DATA.map((item) => (
 					<li
 						key={item.id}
 						onClick={() => {
 							changeTab(item.id);
 						}}
-						className="p-2 rounded cursor-pointer bg-black">
+						className="p-2 rounded cursor-pointer bg-black hover:bg-black/80 transition-colors">
 						{item.label}
 					</li>
 				))}

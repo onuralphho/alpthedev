@@ -58,7 +58,6 @@ function UserTable() {
 				"Content-Type": "application/json",
 			},
 		});
-		1;
 		const data = await res.json();
 
 		if (data.success) {
