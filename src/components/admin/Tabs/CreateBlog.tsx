@@ -7,16 +7,20 @@ type FormState = {
 	title: string;
 	description: string;
 	descriptionURL: string;
+	categoryId: number;
+};
+
+const initial_form_state = {
+	title: "",
+	description: "",
+	descriptionURL: "",
+	categoryId: 0,
 };
 
 function CreateBlog() {
-	const [formState, setFormState] = useState<FormState>({
-		title: "",
-		description: "",
-		descriptionURL: "",
-	});
-	const [markDownValue, setMarkDownValue] = useState<string | undefined>("**Hello world!!!**");
 	const [user, setUser] = useState<Session["user"]>();
+	const [formState, setFormState] = useState<FormState>(initial_form_state);
+	const [markDownValue, setMarkDownValue] = useState<string | undefined>("**Hello world!!!**");
 	const [availableCategories, setAvailableCategories] = useState<BlogCategories[]>();
 	const storedUser = localStorage.getItem("user");
 
@@ -37,12 +41,31 @@ function CreateBlog() {
 		}
 	}, []);
 
-	const onFormChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+	const onFormChange = (
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+	) => {
 		setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
 
 	const publishBlog = async (e: FormEvent) => {
-		e.preventDefault();
+		const request = {
+			title: formState.title,
+			content: markDownValue,
+			description: formState.description,
+			descriptionURL: formState.descriptionURL,
+			categoryId: Number(formState.categoryId),
+			userId: Number(user?.id),
+		};
+
+		const res = await fetch("api/blog", {
+			method: "POST",
+			body: JSON.stringify(request),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const data = await res.json();
 	};
 
 	return (
@@ -94,9 +117,9 @@ function CreateBlog() {
 						Category:
 					</label>
 					<select
-						onChange={(e) => {
-							console.log(e.target.value);
-						}}
+						name="categoryId"
+						id="categoryId"
+						onChange={onFormChange}
 						className="py-2 border rounded w-max">
 						<option value="" disabled selected>
 							Select
