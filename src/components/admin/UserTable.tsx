@@ -4,7 +4,6 @@ import { type User, Blog, Role } from "@prisma/client";
 import { MdDeleteForever, MdSave } from "react-icons/md";
 import { useAlertContext } from "@/providers/AlertProvider";
 import { sleep } from "@/tools/sleep";
-import AlertBox from "../AlertBox";
 import { UserRoles } from "@/constants/RoleEnum";
 import Pagination from "./Pagination";
 
@@ -23,6 +22,7 @@ const USER_TABLE_COLUMNS = [
 
 function UserTable() {
 	const alertCtx = useAlertContext();
+	const [tableFreeSpace, setTableFreeSpace] = useState<number>(0);
 	const [userData, setUserData] = useState<UserWithBlogs[] | null>();
 	const [dbUserData, setDbUserData] = useState<UserWithBlogs[] | null>();
 	const [totalCount, setTotalCount] = useState(0);
@@ -100,13 +100,16 @@ function UserTable() {
 			setUserData(data.data.users);
 			setDbUserData(data.data.users);
 			setTotalCount(data.data.totalCount);
+
+			const freeSpaceCalc = 430 - data.data.users.length * 43;
+			setTableFreeSpace(freeSpaceCalc);
 		};
 		fetchUser();
 	}, [pagination]);
 
 	return (
 		<>
-			<table className="w-full text-center rounded border overflow-y-auto">
+			<table className="w-full text-center rounded border overflow-y-auto h-[500px]">
 				<thead className="border table-fixed">
 					<tr className="font-bold">
 						{USER_TABLE_COLUMNS.map((column, index) => (
@@ -121,7 +124,10 @@ function UserTable() {
 				</thead>
 				<tbody className="">
 					{userData?.map((user) => (
-						<tr style={{height:"10px", overflowY:'auto'}} key={user.id} className="">
+						<tr
+							style={{ height: "10px", overflowY: "auto" }}
+							key={user.id}
+							className="">
 							<td className="border">
 								<input
 									onChange={(e) => {
@@ -213,6 +219,11 @@ function UserTable() {
 							</td>
 						</tr>
 					))}
+					<tr
+						style={{
+							height: `${tableFreeSpace}px`,
+							display: tableFreeSpace > 0 ? "block" : "none",
+						}}></tr>
 				</tbody>
 				<tfoot>
 					{userData && (
