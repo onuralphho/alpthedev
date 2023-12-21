@@ -110,11 +110,7 @@ function UserTable() {
 
 	return (
 		<>
-			<AlertBox
-				message={alertCtx?.alert.type}
-				isShown={alertCtx?.alert.shown}
-				closeBox={alertCtx?.setAlert}
-			/>
+			
 			<table className="w-full text-center rounded border">
 				<thead className="border table-fixed">
 					<tr className="font-bold">

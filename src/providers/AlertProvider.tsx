@@ -1,11 +1,9 @@
-"use client"
+"use client";
 import { createContext, useState, useContext } from "react";
 import { AlertContextType, IAlert } from "@/@types/alertType";
 const AlertContext = createContext<AlertContextType | null>(null);
 
-
-
-const AlertProvider = (props:{children:React.ReactNode}) => {
+const AlertProvider = (props: { children: React.ReactNode }) => {
 	const [alert, setAlert] = useState<IAlert>({
 		shown: false,
 		type: "Message Delivered",

@@ -10,6 +10,7 @@ type FormState = {
 	categoryId: number;
 };
 
+const initial_content_state = "**Hello world!!!**";
 const initial_form_state = {
 	title: "",
 	description: "",
@@ -17,10 +18,11 @@ const initial_form_state = {
 	categoryId: 0,
 };
 
+
 function CreateBlog() {
 	const [user, setUser] = useState<Session["user"]>();
 	const [formState, setFormState] = useState<FormState>(initial_form_state);
-	const [markDownValue, setMarkDownValue] = useState<string | undefined>("**Hello world!!!**");
+	const [markDownValue, setMarkDownValue] = useState<string | undefined>(initial_content_state);
 	const [availableCategories, setAvailableCategories] = useState<BlogCategories[]>();
 	const storedUser = localStorage.getItem("user");
 
@@ -67,6 +69,11 @@ function CreateBlog() {
 
 		const data = await res.json();
 	};
+
+	const setInitialForm = () => {
+		setFormState(initial_form_state);
+		setMarkDownValue(initial_content_state);
+	}
 
 	return (
 		<div className="flex flex-col w-full ">

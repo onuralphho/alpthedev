@@ -13,14 +13,14 @@ const AlertBox = (props: any) => {
 					? "opacity-100 translate-y-0"
 					: "opacity-0 -translate-y-24"
 			} ${
-				props.message !== "Please Fill the Form" &&
+				props.message !== "Please Fill the Form" ||
 				props.message !== "Please Enter Valid E-mail"
 					? "bg-green-500"
 					: "bg-red-500"
-			} cursor-pointer transition-all duration-700 ease-in-out absolute w-fit z-40 top-2 left-0 right-0 m-auto  px-4 py-2 rounded-2xl shadow-lg shadow-[rgba(0,0,0,0.4)]`}>
+			} cursor-pointer transition-all duration-700 ease-in-out fixed w-fit z-[999] top-2 left-0 right-0 m-auto  px-4 py-2 rounded-2xl `}>
 			<div className="flex gap-1 items-center text-2xl text-white font-thin">
 				{props.message}
-				{props.message !== "Please Fill the Form" &&
+				{props.message !== "Please Fill the Form" ||
 				props.message !== "Please Enter Valid E-mail" ? (
 					<TiTick />
 				) : (
