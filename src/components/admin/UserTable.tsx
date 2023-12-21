@@ -65,10 +65,6 @@ function UserTable() {
 			alertCtx?.setAlert({ shown: true, type: data.message });
 			await sleep(2000);
 			alertCtx?.setAlert({ shown: false, type: data.message });
-		} else {
-			alertCtx?.setAlert({ shown: true, type: data.message });
-			await sleep(2000);
-			alertCtx?.setAlert({ shown: false, type: data.message });
 		}
 	};
 
@@ -110,8 +106,7 @@ function UserTable() {
 
 	return (
 		<>
-			
-			<table className="w-full text-center rounded border">
+			<table className="w-full text-center rounded border overflow-y-auto">
 				<thead className="border table-fixed">
 					<tr className="font-bold">
 						{USER_TABLE_COLUMNS.map((column, index) => (
@@ -126,7 +121,7 @@ function UserTable() {
 				</thead>
 				<tbody className="">
 					{userData?.map((user) => (
-						<tr key={user.id} className="">
+						<tr style={{height:"10px", overflowY:'auto'}} key={user.id} className="">
 							<td className="border">
 								<input
 									onChange={(e) => {

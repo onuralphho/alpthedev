@@ -1,3 +1,5 @@
+import { useAlertContext } from "@/providers/AlertProvider";
+import { sleep } from "@/tools/sleep";
 import { BlogCategories } from "@prisma/client";
 import MDEditor from "@uiw/react-md-editor";
 import { Session } from "next-auth";
@@ -18,14 +20,13 @@ const initial_form_state = {
 	categoryId: 0,
 };
 
-
 function CreateBlog() {
 	const [user, setUser] = useState<Session["user"]>();
 	const [formState, setFormState] = useState<FormState>(initial_form_state);
 	const [markDownValue, setMarkDownValue] = useState<string | undefined>(initial_content_state);
 	const [availableCategories, setAvailableCategories] = useState<BlogCategories[]>();
 	const storedUser = localStorage.getItem("user");
-
+	const alertCtx = useAlertContext();
 	useEffect(() => {
 		const getCategories = async () => {
 			const res = await fetch("api/blogCategories/getAllCategories", {
@@ -67,13 +68,18 @@ function CreateBlog() {
 			},
 		});
 
-		const data = await res.json();
+		if (res.status === 200) {
+			const data = await res.json();
+			alertCtx?.setAlert({ shown: true, type: data.message });
+			await sleep(2000);
+			alertCtx?.setAlert({ shown: false, type: data.message });
+		}
 	};
 
 	const setInitialForm = () => {
 		setFormState(initial_form_state);
 		setMarkDownValue(initial_content_state);
-	}
+	};
 
 	return (
 		<div className="flex flex-col w-full ">
@@ -82,17 +88,38 @@ function CreateBlog() {
 				onSubmit={publishBlog}
 				className="bg-white flex flex-col gap-4 rounded w-full text-black  p-2 m-1">
 				<div className="flex flex-col gap-4 ">
-					<div className="flex flex-col w-full">
-						<label className="font-bold" htmlFor="title">
-							Title:
-						</label>
-						<input
-							onChange={onFormChange}
-							className="border rounded p-1"
-							type="text"
-							name="title"
-							id="title"
-						/>
+					<div className="flex gap-4">
+						<div className="flex flex-col w-full">
+							<label className="font-bold" htmlFor="title">
+								Title:
+							</label>
+							<input
+								onChange={onFormChange}
+								className="border rounded p-1 py-2"
+								type="text"
+								name="title"
+								id="title"
+							/>
+						</div>
+						<div className="flex flex-col w-full">
+							<label className="font-bold" htmlFor="categoryId">
+								Category:
+							</label>
+							<select
+								name="categoryId"
+								id="categoryId"
+								onChange={onFormChange}
+								className="py-2 border rounded ">
+								<option value="" disabled selected>
+									Select
+								</option>
+								{availableCategories?.map((category) => (
+									<option key={category.id} value={category.id}>
+										{category.name}
+									</option>
+								))}
+							</select>
+						</div>
 					</div>
 					<div className="flex flex-col w-full">
 						<label className="font-bold" htmlFor="description">
@@ -119,25 +146,7 @@ function CreateBlog() {
 					</div>
 				</div>
 				<MDEditor height={700} value={markDownValue} onChange={setMarkDownValue} />
-				<div className="flex flex-col w-full">
-					<label className="font-bold" htmlFor="categoryId">
-						Category:
-					</label>
-					<select
-						name="categoryId"
-						id="categoryId"
-						onChange={onFormChange}
-						className="py-2 border rounded w-max">
-						<option value="" disabled selected>
-							Select
-						</option>
-						{availableCategories?.map((category) => (
-							<option key={category.id} value={category.id}>
-								{category.name}
-							</option>
-						))}
-					</select>
-				</div>
+
 				<button className="bg-green-500 rounded p-2 text-white text-2xl font-bold">
 					Publish
 				</button>
