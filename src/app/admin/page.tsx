@@ -19,7 +19,7 @@ async function Admin() {
 	if (session?.user.role !== UserRoles.ADMIN) {
 		redirect("/blog");
 	}
-
+//?:TODO: istatistik ekle
 	return (
 		<div className="pt-20 space-y-2 text-white gap-4">
 			<section className="flex justify-end p-2">

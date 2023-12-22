@@ -24,7 +24,6 @@ async function Blog({
 			title: {
 				contains: searchParams?.search as string,
 			},
-
 			category: {
 				name: {
 					contains: searchParams?.category as string,
