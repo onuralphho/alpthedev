@@ -5,6 +5,8 @@ import { Inter } from "next/font/google";
 import AlertProvider from "@/providers/AlertProvider";
 import "./github-markdown.css";
 import Main from "@/components/interface/Main";
+import { Suspense } from "react";
+import Loading from "./loading";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<AlertProvider>
 					<Main>
 						<Header />
-						{children}
+						<Suspense fallback={<Loading />}>{children}</Suspense>
 					</Main>
 				</AlertProvider>
 			</body>

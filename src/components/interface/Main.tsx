@@ -11,7 +11,7 @@ type Props = {
 function Main({ children }: Props) {
 	const alertCtx = useAlertContext();
 	return (
-		<div className="bg-[#00000033]">
+		<div >
 			<AlertBox
 				message={alertCtx?.alert.type}
 				isShown={alertCtx?.alert.shown}

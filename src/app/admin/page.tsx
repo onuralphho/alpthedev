@@ -21,7 +21,7 @@ async function Admin() {
 	}
 //?:TODO: istatistik ekle
 	return (
-		<div className="pt-20 space-y-2 text-white gap-4">
+		<div className="pt-20 bg-black space-y-2 text-white gap-4">
 			<section className="flex justify-end p-2">
 				<div className="flex gap-5 items-end">
 					{session?.user.name}

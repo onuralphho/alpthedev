@@ -19,7 +19,7 @@ async function Blog({
 }: {
 	searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-	const blogs = await prisma.blog.findMany({
+		const blogs = await prisma.blog.findMany({
 		where: {
 			title: {
 				contains: searchParams?.search as string,
