@@ -8,7 +8,7 @@ const Header = () => {
 	return (
 		<header
 			id="navbar"
-			className={`flex justify-between p-4 fixed z-[99] w-full  transition-all`}>
+			className={`absolute flex justify-between p-4 z-[99] w-full  transition-all`}>
 			<ul className="flex gap-4 ">
 				<li>
 					<a aria-label="GitHub" target="_blank" href="https://github.com/onuralphho/">

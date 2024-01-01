@@ -42,11 +42,11 @@ async function BlogDetails({ params }: { params: { blogId: string } }) {
 				<h1 className="text-3xl lg:text-5xl xl:text-7xl font-extrabold">
 					{blogDetails?.title}
 				</h1>
-				<div className="flex items-center gap-2">
+				<div className="flex sticky top-0 p-2 items-center gap-2 bg-white">
 					<img
 						src={profilePicture.src}
 						alt="Author's profile picture"
-						className="w-16 aspec rounded-full"
+						className="w-14 aspec rounded-full"
 					/>
 					<span className="text-lg  font-semibold">Onuralp</span>
 				</div>
@@ -55,11 +55,6 @@ async function BlogDetails({ params }: { params: { blogId: string } }) {
 					alt={blogDetails?.description}
 					className="rounded-lg md:h-80 w-full object-cover "
 				/>
-				{/* <div
-					className="text-xl"
-					dangerouslySetInnerHTML={{
-						__html: blogDetails?.content ?? "<div>Bir Hata Oluştu...</div>",
-					}}></div> */}
 
 				<Markdown
 					className="markdown-body"
