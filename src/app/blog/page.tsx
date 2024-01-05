@@ -23,10 +23,12 @@ async function Blog({
 		where: {
 			title: {
 				contains: searchParams?.search as string,
+				mode: 'insensitive'
 			},
 			category: {
 				name: {
 					contains: searchParams?.category as string,
+					mode: 'insensitive',
 				},
 			},
 		},
