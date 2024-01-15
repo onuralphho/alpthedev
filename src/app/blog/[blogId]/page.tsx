@@ -1,5 +1,5 @@
 import prisma from "@/lib/db";
-import React from "react";
+import React, { Suspense } from "react";
 import profilePicture from "@/assets/profile.jpg";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -37,33 +37,35 @@ export async function generateMetadata({ params }: { params: { blogId: string } 
 async function BlogDetails({ params }: { params: { blogId: string } }) {
 	const blogDetails = await prisma.blog.findUnique({ where: { id: Number(params.blogId) } });
 	return (
-		<div className=" min-h-screen py-20">
-			<div className="max-w-3xl mx-auto p-4 space-y-4">
-				<h1 className="text-3xl lg:text-5xl xl:text-7xl font-extrabold">
-					{blogDetails?.title}
-				</h1>
-				<div className="flex sticky top-0 p-2 items-center gap-2 bg-white">
+		<Suspense fallback={<div>Loading...</div>}>
+			<div className=" min-h-screen py-20">
+				<div className="max-w-3xl mx-auto p-4 space-y-4">
+					<h1 className="text-3xl lg:text-5xl xl:text-7xl font-extrabold">
+						{blogDetails?.title}
+					</h1>
+					<div className="flex sticky top-0 p-2 items-center gap-2 bg-white">
+						<img
+							src={profilePicture.src}
+							alt="Author's profile picture"
+							className="w-14 aspec rounded-full"
+						/>
+						<span className="text-lg  font-semibold">Onuralp</span>
+					</div>
 					<img
-						src={profilePicture.src}
-						alt="Author's profile picture"
-						className="w-14 aspec rounded-full"
+						src={blogDetails?.descriptionURL}
+						alt={blogDetails?.description}
+						className="rounded-lg md:h-80 w-full object-cover "
 					/>
-					<span className="text-lg  font-semibold">Onuralp</span>
+	
+					<Markdown
+						className="markdown-body"
+						rehypePlugins={[rehypeSanitize,rehypeHighlight]}
+						remarkPlugins={[remarkGfm]}>
+						{blogDetails?.content}
+					</Markdown>
 				</div>
-				<img
-					src={blogDetails?.descriptionURL}
-					alt={blogDetails?.description}
-					className="rounded-lg md:h-80 w-full object-cover "
-				/>
-
-				<Markdown
-					className="markdown-body"
-					rehypePlugins={[rehypeSanitize,rehypeHighlight]}
-					remarkPlugins={[remarkGfm]}>
-					{blogDetails?.content}
-				</Markdown>
 			</div>
-		</div>
+		</Suspense>
 	);
 }
 

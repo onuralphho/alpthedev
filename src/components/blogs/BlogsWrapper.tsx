@@ -25,11 +25,11 @@ export default function BlogsWrapper({ blogs }: Props) {
 				<BlogSearchInput />
 			</div>
 			<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-12   w-full gap-2 mb-10">
-				{blogs
+				{blogs.length > 0 ? blogs
 					.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
 					.map((blog,index) => (
 						<BlogCard key={blog.id} blog={blog} index={index} />
-					))}
+					)) : <div className="col-span-12 flex  justify-center">No content found..</div>}
 			</div>
 		</section>
 	);
