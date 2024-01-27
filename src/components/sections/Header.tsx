@@ -3,8 +3,12 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import ValidateIsAdmin from "../admin/ValidateIsAdmin";
 const Header = () => {
+	const { data: session } = useSession();
 	const pathname = usePathname();
+	if (pathname === "/admin") return null;
 	return (
 		<header
 			id="navbar"
@@ -40,6 +44,13 @@ const Header = () => {
 					</a>
 				</li>
 			</ul>
+
+			{session && session.user && (
+				<Link href={"/admin"} className="btn bg-black text-white rounded  p-2 ">
+					ADMIN
+				</Link>
+			)}
+
 			<div
 				className={`flex ${
 					pathname.startsWith("/blog") ? "text-black" : "text-white"
@@ -48,9 +59,7 @@ const Header = () => {
 					Home
 				</Link>
 				<span>/</span>
-				<Link
-					className={`${pathname.includes("/blog") && "text-purple-500"}`}
-					href="/blog">
+				<Link className={`${pathname.includes("/blog") && "text-purple-500"}`} href="/blog">
 					Blog
 				</Link>
 			</div>

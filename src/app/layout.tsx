@@ -7,6 +7,10 @@ import "./github-markdown.css";
 import Main from "@/components/interface/Main";
 import { Suspense } from "react";
 import Loading from "./loading";
+import SessionProvider from "@/providers/SessionProvider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,16 +22,20 @@ export const metadata: Metadata = {
 		google: "google-site-verification=H5KCqVTa4IoEfC6gAUiy5g352hkeGiyAzXOEe9M2xEI",
 	},
 };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	const session = await getServerSession(authOptions);
+
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<AlertProvider>
-					<Main>
-						<Header />
-						<Suspense fallback={<Loading />}>{children}</Suspense>
-					</Main>
-				</AlertProvider>
+				<SessionProvider session={session}>
+					<AlertProvider>
+						<Main>
+							<Header />
+							<Suspense fallback={<Loading />}>{children}</Suspense>
+						</Main>
+					</AlertProvider>
+				</SessionProvider>
 			</body>
 		</html>
 	);

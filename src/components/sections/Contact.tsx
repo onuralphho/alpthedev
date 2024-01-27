@@ -40,7 +40,6 @@ const Contact = () => {
 				`https://emailvalidation.abstractapi.com/v1/?api_key=9081505faa59489cafd0da471c6e98fb&email=${emailInput}`
 			);
 			const data = await res.json();
-			debugger;
 			if (data.is_smtp_valid.value) {
 				setErrorEmail(false);
 				emailjs.sendForm(

@@ -2,7 +2,6 @@
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
 interface FormValues {
 	username: string;
 	password: string;
@@ -10,6 +9,7 @@ interface FormValues {
 }
 
 function SignInForm() {
+
 	const router = useRouter();
 	const validateForm = (values: FormValues) => {
 		const errors: typeof values = {
@@ -37,11 +37,11 @@ function SignInForm() {
 			password: values.password,
 			redirect: false,
 		});
-		console.log(signInData);
 		if (!signInData?.ok) {
 			setFieldError("formError", "Invalid username or password");
 			return;
 		}
+
 		router.push("/admin");
 	};
 
@@ -87,7 +87,6 @@ function SignInForm() {
 						/>
 					</label>
 					<button
-
 						className="btn bg-purple-500 p-2 text-white rounded-lg"
 						type="submit"
 						disabled={isSubmitting}>
