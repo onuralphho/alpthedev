@@ -27,7 +27,7 @@ const Header = () => {
 						aria-label="Fiverr"
 						target="_blank"
 						href="https://www.fiverr.com/onuralphho61/create-responsive-react-web-apps-for-you">
-						<SiFiverr color="#1dbf73" className="social-icon" />
+						<SiFiverr color="#1dbf73"  className="social-icon" />
 					</a>
 				</li>
 				<li
