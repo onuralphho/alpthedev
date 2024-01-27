@@ -1,45 +1,46 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { type BlogCategories } from "@prisma/client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Session } from "next-auth";
+
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 type Props = {
 	blogCategories: BlogCategories[];
 };
 
 function BlogCatagoriesSide({ blogCategories }: Props) {
-	const [user, setUser] = useState<Session["user"]>();
-
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const activeCategory = searchParams.get("category");
-
-	useEffect(() => {
-		const storedUser = localStorage.getItem("user");
-		if (storedUser) {
-			setUser(JSON.parse(storedUser));
-		}
-	}, []);
+	const { data: session } = useSession();
 
 	return (
 		<aside className="flex flex-col gap-2  sm:border-r sm:pr-2  ">
 			<div className="flex flex-col gap-2 border-b py-4">
 				<h1 className="text-4xl font-semibold">Welcome,</h1>
-				<span className="text-xl">
-					{user ? (
-						user.name
+				<div className="text-xl">
+					{session ? (
+						<div className="flex gap-2 items-end flex-wrap">
+							<span>{session.user.username}</span>{" "}
+							<button
+								onClick={() => {
+									signOut();
+								}}
+								className="text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2">
+								Sign Out
+							</button>
+						</div>
 					) : (
-						<span>
-							Guest{" "}
+						<div className="flex gap-2 items-end flex-wrap">
+							<span>Guest</span>
 							<Link
-								className="text-sm border rounded text-purple-500 border-purple-500 hover:bg-purple-50 transition-colors p-2"
+								className="text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2"
 								href={"blog/sign-in"}>
 								Sign In
 							</Link>
-						</span>
+						</div>
 					)}
-				</span>
+				</div>
 			</div>
 			<div className="sticky top-20 max-sm:hidden">
 				<ul className="space-y-2">

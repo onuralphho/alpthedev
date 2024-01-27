@@ -1,15 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
 import { signOut } from "next-auth/react";
-import { Session } from "next-auth";
 
-function SignOutButton({ session }: { session: Session }) {
-	useEffect(() => {
-		if (session) {
-			localStorage.setItem("user", JSON.stringify(session.user));
-		}
-	}, []);
-
+function SignOutButton() {
 	return (
 		<button
 			onClick={() => {

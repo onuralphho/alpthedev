@@ -25,7 +25,7 @@ async function Admin() {
 			<section className="flex justify-end p-2">
 				<div className="flex gap-5 items-end">
 					{session?.user.name}
-					<SignOutButton session={session} />
+					<SignOutButton/>
 				</div>
 			</section>
 			<Main />
