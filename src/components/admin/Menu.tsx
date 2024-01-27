@@ -46,7 +46,7 @@ function Menu({ changeTab }: Props) {
 					onClick={() => {
 						changeTab("");
 					}}
-					className="p-2 rounded cursor-pointer bg-violet-950 hover:bg-violet-950/80 transition-colors">
+					className="p-2 rounded cursor-pointer bg-slate-800 hover:bg-slate-800/80 transition-colors">
 					<div className="flex items-center gap-2">
 						{getIcon("home_icon")}
 						Home
@@ -61,7 +61,7 @@ function Menu({ changeTab }: Props) {
 									onClick={() => {
 										changeTab(item.id);
 									}}
-									className="p-2 rounded cursor-pointer bg-violet-950 hover:bg-violet-950/80 transition-colors">
+									className="p-2 rounded cursor-pointer bg-slate-800 hover:bg-slate-800/80 transition-colors">
 									<div className="flex items-center gap-2">
 										{getIcon(item.icon)}
 										{item.label}
@@ -76,7 +76,7 @@ function Menu({ changeTab }: Props) {
 								onClick={() => {
 									changeTab(item.id);
 								}}
-								className="p-2 rounded cursor-pointer bg-violet-950 hover:bg-violet-950/80 transition-colors">
+								className="p-2 rounded cursor-pointer bg-slate-800 hover:bg-slate-800/80 transition-colors">
 								<div className="flex items-center gap-2">
 									{getIcon(item.icon)}
 									{item.label}

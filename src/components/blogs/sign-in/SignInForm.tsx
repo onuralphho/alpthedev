@@ -56,7 +56,7 @@ function SignInForm() {
 						e.preventDefault();
 						handleSubmit();
 					}}
-					className="flex flex-col gap-2 w-full bg-white p-4 rounded-lg text-lg">
+					className="flex flex-col gap-2 w-full bg-white p-4 rounded-l-lg text-lg">
 					<h2>Contact me for account creation</h2>
 					<label>
 						<Field

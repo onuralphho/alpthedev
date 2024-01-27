@@ -3,7 +3,6 @@ import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import SessionProvider from "@/providers/SessionProvider";
 
 async function SignIn() {
 	const session = await getServerSession(authOptions);
@@ -17,8 +16,9 @@ async function SignIn() {
 	}
 
 	return (
-		<div className="flex justify-end pt-20 p-5 lg:p-10 lg:pt-20 min-h-screen bg-black ">
-			<div className="">
+		<div className="flex justify-end pt-56  max-h-screen overflow-hidden ">
+			<img src="https://stormandsky.com/gif/11.gif" className="absolute z-[-1] top-0 h-full w-full object-cover" alt="storm" />
+			<div className=" rounded-tl-lg min-h-screen">
 				<SignInForm />
 			</div>
 		</div>
