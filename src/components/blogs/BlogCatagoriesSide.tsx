@@ -24,7 +24,7 @@ function BlogCatagoriesSide({ blogCategories }: Props) {
 								onClick={() => {
 									signOut();
 								}}
-								className="text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2">
+								className="btn text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2">
 								Sign Out
 							</button>
 						</div>
@@ -32,7 +32,7 @@ function BlogCatagoriesSide({ blogCategories }: Props) {
 						<div className="flex gap-2 items-end flex-wrap">
 							<span>Guest</span>
 							<button
-								className="text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2"
+								className="btn text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2"
 								onClick={() => {
 									signIn();
 								}}>
