@@ -1,9 +1,7 @@
 "use client";
 import { type BlogCategories } from "@prisma/client";
 import { useRouter, useSearchParams } from "next/navigation";
-
-import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 type Props = {
 	blogCategories: BlogCategories[];
 };
@@ -33,11 +31,13 @@ function BlogCatagoriesSide({ blogCategories }: Props) {
 					) : (
 						<div className="flex gap-2 items-end flex-wrap">
 							<span>Guest</span>
-							<Link
+							<button
 								className="text-sm border rounded-lg text-white bg-purple-500 transition-colors p-2"
-								href={"blog/sign-in"}>
+								onClick={() => {
+									signIn();
+								}}>
 								Sign In
-							</Link>
+							</button>
 						</div>
 					)}
 				</div>

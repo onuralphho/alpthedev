@@ -17,8 +17,9 @@ export const metadata: Metadata = {
 async function Admin() {
 	const session = await getServerSession(authOptions);
 	if (session?.user.role !== UserRoles.ADMIN) {
-		redirect("/blog");
+		redirect("/404");
 	}
+	
 //?:TODO: istatistik ekle
 	return (
 		<div className="pt-20 bg-black space-y-2 text-white gap-4">

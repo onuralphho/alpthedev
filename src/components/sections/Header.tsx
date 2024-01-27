@@ -43,13 +43,13 @@ const Header = () => {
 			<div
 				className={`flex ${
 					pathname.startsWith("/blog") ? "text-black" : "text-white"
-				} font-bold items-center text-lg md:text-2xl gap-2 `}>
+				} font-bold items-center text-lg md:text-xl gap-2 `}>
 				<Link className={`${pathname === "/" && "text-purple-500"}`} href="/">
 					Home
 				</Link>
 				<span>/</span>
 				<Link
-					className={`${pathname === "/blog" && "text-purple-500"}`}
+					className={`${pathname.includes("/blog") && "text-purple-500"}`}
 					href="/blog">
 					Blog
 				</Link>

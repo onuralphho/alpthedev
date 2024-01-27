@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 interface FormValues {
 	username: string;
 	password: string;
+	formError: string;
 }
 
 function SignInForm() {
@@ -14,6 +15,7 @@ function SignInForm() {
 		const errors: typeof values = {
 			username: "",
 			password: "",
+			formError: "",
 		};
 		if (!values.username) {
 			errors.username = "Required";
@@ -26,18 +28,28 @@ function SignInForm() {
 		}
 	};
 
+	const submitFormHandler = async (
+		values: FormValues,
+		{ setFieldError }: FormikHelpers<FormValues>
+	) => {
+		const signInData = await signIn("credentials", {
+			username: values.username,
+			password: values.password,
+			redirect: false,
+		});
+		console.log(signInData);
+		if (!signInData?.ok) {
+			setFieldError("formError", "Invalid username or password");
+			return;
+		}
+		router.push("/admin");
+	};
+
 	return (
 		<Formik
-			initialValues={{ username: "", password: "" } as FormValues}
+			initialValues={{ username: "", password: "", formError: "" } as FormValues}
 			validate={validateForm}
-			onSubmit={async (values) => {
-				const signInData = await signIn("credentials", {
-					username: values.username,
-					password: values.password,
-					redirect: false,
-				});
-				router.push("/admin");
-			}}>
+			onSubmit={submitFormHandler}>
 			{({ isSubmitting, handleSubmit }) => (
 				<Form
 					onSubmit={(e: any) => {
@@ -54,7 +66,11 @@ function SignInForm() {
 							name="username"
 							placeholder="Username"
 						/>
-						<ErrorMessage className="text-red-500" name="username" component="div" />
+						<ErrorMessage
+							className="text-red-500 text-sm"
+							name="username"
+							component="div"
+						/>
 					</label>
 					<label>
 						<Field
@@ -64,14 +80,20 @@ function SignInForm() {
 							name="password"
 							placeholder="Password"
 						/>
-						<ErrorMessage className="text-red-500" name="password" component="div" />
+						<ErrorMessage
+							className="text-red-500 text-sm"
+							name="password"
+							component="div"
+						/>
 					</label>
 					<button
-						className="bg-purple-500 p-2 text-white rounded-lg disabled:bg-slate-600"
+
+						className="btn bg-purple-500 p-2 text-white rounded-lg"
 						type="submit"
 						disabled={isSubmitting}>
 						Submit
 					</button>
+					<ErrorMessage className="text-red-500" name="formError" component="div" />
 				</Form>
 			)}
 		</Formik>
