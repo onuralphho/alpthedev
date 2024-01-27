@@ -55,9 +55,8 @@ function Menu({ changeTab }: Props) {
 				{MENU_DATA.map((item) => {
 					if (item.type === UserRoles.ADMIN) {
 						return (
-							<ValidateIsAdmin>
+							<ValidateIsAdmin key={item.id}>
 								<li
-									key={item.id}
 									onClick={() => {
 										changeTab(item.id);
 									}}
