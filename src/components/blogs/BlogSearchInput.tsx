@@ -37,7 +37,7 @@ export default function BlogSearchInput({}: Props) {
 			<input
 				ref={inputRef}
 				className="p-2 px-1 peer z-10 bg-transparent outline-none"
-				placeholder=" "
+				placeholder=""
 				type="text"
 				onChange={searchInputHandler}
 			/>

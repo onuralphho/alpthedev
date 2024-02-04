@@ -108,7 +108,7 @@ function UserTable() {
 	}, [pagination]);
 
 	return (
-		<table className="w-full text-center rounded border overflow-y-auto h-[500px]">
+		<table className="w-full text-center rounded border overflow-y-aut0   h-[500px]">
 			<thead className="border table-fixed">
 				<tr className="font-bold">
 					{USER_TABLE_COLUMNS.map((column, index) => (
@@ -118,7 +118,7 @@ function UserTable() {
 					))}
 				</tr>
 			</thead>
-			<tbody className="">
+			<tbody >
 				{userData?.map((user) => (
 					<tr style={{ height: "10px", overflowY: "auto" }} key={user.id} className="">
 						<td className="border">

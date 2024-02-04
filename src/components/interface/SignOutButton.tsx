@@ -7,7 +7,7 @@ function SignOutButton() {
 			onClick={() => {
 				signOut({ callbackUrl: "/blog/sign-in" });
 			}}
-			className="border p-2 rounded-lg">
+			className="btn bg-slate-800 text-white border p-2 rounded-lg">
 			Sign Out
 		</button>
 	);

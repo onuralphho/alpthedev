@@ -5,6 +5,8 @@ import { UserRoles } from "@/constants/RoleEnum";
 import { useSession } from "next-auth/react";
 import { FaUsers, FaHome } from "react-icons/fa";
 import { IoDocumentSharp } from "react-icons/io5";
+import { IoIosArrowBack } from "react-icons/io";
+import Link from "next/link";
 
 type Props = {
 	changeTab: (tab: string) => void;
@@ -37,16 +39,19 @@ function Menu({ changeTab }: Props) {
 	};
 
 	return (
-		<div className="flex flex-col gap-2 bg-white  p-1 w-80 min-h-screen">
-			<h1 className=" text-black text-xl">
-				<span className="text-3xl">Welcome,</span> {session?.user.name}
-			</h1>
+		<div className="flex flex-col gap-2 bg-slate-800  p-1 w-80 min-h-screen">
+			<div className="flex gap-2 items-center text-white">
+				<Link href={"/blog"} className="btn bg-red-500 text-xl flex justify-center items-center rounded-full p-1"><IoIosArrowBack /></Link>
+				<h1 className=" text-xl ">
+					<span className="text-2xl">Welcome,</span> {session?.user.name}
+				</h1>
+			</div>
 			<ul className="sticky top-1 space-y-1">
 				<li
 					onClick={() => {
 						changeTab("");
 					}}
-					className="p-2 rounded cursor-pointer bg-slate-800 hover:bg-slate-800/80 transition-colors">
+					className="p-2 rounded cursor-pointer bg-white text-slate-800 hover:bg-slate-300  transition-colors">
 					<div className="flex items-center gap-2">
 						{getIcon("home_icon")}
 						Home
@@ -60,7 +65,7 @@ function Menu({ changeTab }: Props) {
 									onClick={() => {
 										changeTab(item.id);
 									}}
-									className="p-2 rounded cursor-pointer bg-slate-800 hover:bg-slate-800/80 transition-colors">
+									className="p-2 rounded cursor-pointer bg-white text-slate-800 hover:bg-slate-300 transition-colors">
 									<div className="flex items-center gap-2">
 										{getIcon(item.icon)}
 										{item.label}
@@ -75,7 +80,7 @@ function Menu({ changeTab }: Props) {
 								onClick={() => {
 									changeTab(item.id);
 								}}
-								className="p-2 rounded cursor-pointer bg-slate-800 hover:bg-slate-800/80 transition-colors">
+								className="p-2 rounded cursor-pointer bg-white text-slate-800 hover:bg-slate-300 transition-colors">
 								<div className="flex items-center gap-2">
 									{getIcon(item.icon)}
 									{item.label}

@@ -22,7 +22,6 @@ function Main() {
 					<div className="flex flex-col p-4 w-full">
 						<section className="flex justify-end p-2">
 							<div className="flex gap-5 items-end">
-								{session?.user.name}
 								<SignOutButton />
 							</div>
 						</section>

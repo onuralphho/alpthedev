@@ -19,7 +19,7 @@ async function Admin() {
 
 	//?:TODO: istatistik ekle
 	return (
-		<div className=" bg-slate-800 space-y-2 text-white gap-4">
+		<div className=" bg-slate-50 space-y-2  gap-4">
 			<Main />
 		</div>
 	);

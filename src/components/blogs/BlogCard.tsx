@@ -1,6 +1,5 @@
 "use client"
 import React from "react";
-import type { Blog } from "@prisma/client";
 import Link from "next/link";
 import { BlogsWithCategoryAndUser } from "@/@types/entityTypes";
 import { dateformatter } from "@/lib/dateformatter";
