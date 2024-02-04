@@ -21,7 +21,7 @@ export default function BlogsWrapper({ blogs }: Props) {
 
 	return (
 		<section className="w-full flex flex-col gap-2 ">
-			<div className="flex justify-end">
+			<div className=" flex justify-end bg-white z-10">
 				<BlogSearchInput />
 			</div>
 			<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-12   w-full gap-2 mb-10">

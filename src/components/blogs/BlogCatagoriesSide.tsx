@@ -16,7 +16,7 @@ function BlogCatagoriesSide({ blogCategories }: Props) {
 	return (
 		<aside className="flex flex-col gap-2  sm:border-r sm:pr-2  ">
 			<div className="flex flex-col gap-2 border-b py-4">
-				<h1 className="text-4xl font-semibold">Welcome,</h1>
+				<h1 className="text-4xl font-bold">Welcome,</h1>
 				<div className="text-xl">
 					{session ? (
 						<div className="flex gap-2 items-end flex-wrap">
@@ -41,7 +41,8 @@ function BlogCatagoriesSide({ blogCategories }: Props) {
 					)}
 				</div>
 			</div>
-			<div className="sticky top-20 max-sm:hidden">
+			<div className="sticky top-0 max-sm:hidden">
+				<h2 className="text-3xl font-semibold">Filters</h2>
 				<ul className="space-y-2">
 					{blogCategories.map((category) => (
 						<li
