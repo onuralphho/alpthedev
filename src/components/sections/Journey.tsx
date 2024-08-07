@@ -175,7 +175,7 @@ const Journey = () => {
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
-                className="h-min p-3 lg:p-10 "
+                className="h-min p-3 lg:p-10 w-[100vw] "
                 breakpoints={{
                     0: {
                         slidesPerView: 1,
