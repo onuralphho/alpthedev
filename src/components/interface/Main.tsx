@@ -13,7 +13,7 @@ function Main({ children }: Props) {
 	return (
 		<div >
 			<AlertBox
-				message={alertCtx?.alert.type}
+				message={alertCtx?.alert.message}
 				isShown={alertCtx?.alert.shown}
 				closeBox={alertCtx?.setAlert}
 			/>

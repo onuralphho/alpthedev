@@ -1,6 +1,6 @@
 export interface IAlert{
     shown:boolean,
-    type:string
+    message:string
 }
 
 export type AlertContextType = {

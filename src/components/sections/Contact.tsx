@@ -51,28 +51,28 @@ const Contact = () => {
 				setIsMessageSending(false);
 				setEmailInput("");
 				setMessageInput("");
-				alertCtx?.setAlert({ shown: true, type: "Message Delivered" });
+				alertCtx?.setAlert({ shown: true, message: "Message Delivered" });
 				await sleep(2000);
-				alertCtx?.setAlert({ shown: false, type: "Message Delivered" });
+				alertCtx?.setAlert({ shown: false, message: "Message Delivered" });
 			} else {
 				setIsMessageSending(false);
 				setErrorEmail(true);
 				alertCtx?.setAlert({
 					shown: true,
-					type: "Please Enter Valid E-mail",
+					message: "Please Enter Valid E-mail",
 				});
 				await sleep(2000);
 				alertCtx?.setAlert({
 					shown: false,
-					type: "Please Enter Valid E-mail",
+					message: "Please Enter Valid E-mail",
 				});
 			}
 		} else {
 			setIsMessageSending(false);
 			setErrorEmail(true);
-			alertCtx?.setAlert({ shown: true, type: "Please Fill the Form" });
+			alertCtx?.setAlert({ shown: true, message: "Please Fill the Form" });
 			await sleep(2000);
-			alertCtx?.setAlert({ shown: false, type: "Please Fill the Form" });
+			alertCtx?.setAlert({ shown: false, message: "Please Fill the Form" });
 		}
 	};
 

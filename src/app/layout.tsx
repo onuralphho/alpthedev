@@ -1,15 +1,14 @@
-import Header from "@/components/sections/Header";
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import AlertProvider from "@/providers/AlertProvider";
-import "./github-markdown.css";
 import Main from "@/components/interface/Main";
-import { Suspense } from "react";
-import Loading from "./loading";
-import SessionProvider from "@/providers/SessionProvider";
-import { getServerSession } from "next-auth";
+import Header from "@/components/sections/Header";
 import { authOptions } from "@/lib/auth";
+import AlertProvider from "@/providers/AlertProvider";
+import SessionProvider from "@/providers/SessionProvider";
+import type { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
+import "./github-markdown.css";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,8 +30,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 				<SessionProvider session={session}>
 					<AlertProvider>
 						<Main>
+							<div className="fixed top-0">
+								<NextTopLoader
+									color={"#a855f7"}
+									initialPosition={0.08}
+									crawlSpeed={200}
+									height={3}
+									crawl={true}
+									easing="ease"
+									speed={200}
+									showSpinner={false}
+									zIndex={9999}
+								/>
+							</div>
 							<Header />
-							<Suspense fallback={<Loading />}>{children}</Suspense>
+							{children}
 						</Main>
 					</AlertProvider>
 				</SessionProvider>
